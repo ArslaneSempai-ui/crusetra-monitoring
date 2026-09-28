@@ -22,7 +22,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
-import { join } from "node:path";
+import { join, sep } from "node:path";
 
 const dossier = fileURLToPath(new URL(".", import.meta.url));
 
@@ -52,7 +52,9 @@ test("aucun module ne touche le réseau", () => {
   // RÉCURSIF : un fetch planté dans src/scenarios/amount.ts laissait la garde verte quand
   // l'énumération s'arrêtait au premier niveau (constat de Mesure, lot L1, 7/09) ; et un
   // témoin sur l'énumération elle-même : elle doit voir au moins un fichier imbriqué
-  const tout = readdirSync(dossier, { recursive: true }) as string[];
+  /* Les chemins rendus portent le séparateur du système (`\` sous Windows) : ramenés à `/`, pour que
+     « imbriqué » et AUTORISES se lisent pareil partout. */
+  const tout = (readdirSync(dossier, { recursive: true }) as string[]).map((n) => n.split(sep).join("/"));
   assert.ok(tout.some((n) => n.includes("/")),
     "aucun chemin imbriqué énuméré : l'énumération n'est pas récursive, les sous-dossiers échappent à la garde");
   const fichiers = tout.filter((n) => /\.(ts|mjs)$/.test(n) && !/\.test\.(ts|mjs)$/.test(n) && !n.startsWith("fixtures/"));
