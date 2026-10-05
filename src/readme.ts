@@ -25,7 +25,7 @@ export const COMMANDES: [string, string][] = [
   ["npm run measure [-- --yes-overwrite]", "the public measure: every scenario at every threshold on cases we wrote (benign cases included) plus declared generated variants, sealed into `releve-public.json` and readable in `RELEVE-PUBLIC.md`: no real transaction is public, and the record says so; it refuses to overwrite a sealed one without the flag"],
   ["npm run measure:yours -- --alerts=<csv> --transactions=<csv> [--volume=N]", "your own dispositioned alerts, rebuilt into thirty-day cases from your transactions: recall on confirmed suspicious cases and false-alert rate on benign ones per scenario and threshold, with n and interval; a sealed record and a report beside your file, never a value of yours"],
   ["npm run optimise -- --from=<record> --recall=<min>", "the best trade-off: fewest alerts with the recall lower bound held, or `--alert-budget=<N>` for the highest bounded recall under a monthly alert budget"],
-  ["npm run sceller -- <record.json>", "seal a record: the content hash that makes a silently edited measurement fail loudly; the same content hash as cascade-routing"],
+  ["npm run sceller -- <record.json>", "seal a record: the content hash that makes a silently edited measurement fail loudly; the same content hash as Crusetra Routing"],
   ["npm run verify -- <report>", "check that a report was issued by the holder of the suite's public key, `cle-publique.pem`, without asking us"],
   ["npm run licences", "regenerate `LICENCES.md`, the licence of every shipped package; `--check` fails the suite when the table drifts"],
 ];

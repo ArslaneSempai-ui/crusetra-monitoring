@@ -202,7 +202,7 @@ function tableMd(tables: Record<string, TableDUnScenario>, quoi: "rappel" | "fau
 
 export function rapportMd(m: MesurePublique, recommandee: CellulePlacee | null): string {
   const l: string[] = [
-    `# Cascade Monitoring: the public measure`,
+    `# Crusetra Monitoring: the public measure`,
     ``,
     `**Provenance**: ${PHRASE_PROVENANCE}. Cases written by this repository (archetypes of`,
     `suspicion and their benign look-alikes) plus seeded, structure-preserving variants,`,
