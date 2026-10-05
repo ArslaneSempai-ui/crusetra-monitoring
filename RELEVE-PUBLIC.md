@@ -1,4 +1,4 @@
-# Cascade Monitoring: the public measure
+# Crusetra Monitoring: the public measure
 
 **Provenance**: no real transaction is public: written and generated, and it says so. Cases written by this repository (archetypes of
 suspicion and their benign look-alikes) plus seeded, structure-preserving variants,
