@@ -19,7 +19,7 @@ import { readFileSync } from "node:fs";
 import { basename } from "node:path";
 import { isMain, refuserDrapeauxInconnus } from "./cli.ts";
 import { scelleIntact, empreinteDuReleve } from "./empreinte.ts";
-import { lignesEvaluation } from "./evaluation.ts";
+import { lignesEvaluationDe } from "./evaluation.ts";
 import { ASSUMPTIONS, UNITS, symboleDe, analystHourlyCost, ligneDHypothese } from "./assumptions.ts";
 import type { MesureAlertes, Cellule } from "./your-alerts.ts";
 import type { PalierId } from "./scenario.ts";
@@ -133,7 +133,7 @@ function decrire(c: CellulePlacee, m: MesureAlertes): string[] {
 }
 
 async function principal(): Promise<void> {
-  for (const l of lignesEvaluation()) console.log(l);
+  for (const l of lignesEvaluationDe("monitoring")) console.log(l);
   refuserDrapeauxInconnus(["--from", "--recall", "--alert-budget"]);
   const arg = (nom: string) => process.argv.find((a) => a.startsWith(`--${nom}=`))?.split("=").slice(1).join("=");
 

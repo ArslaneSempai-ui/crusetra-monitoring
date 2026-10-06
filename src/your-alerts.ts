@@ -37,7 +37,7 @@ import { JOURS_FENETRE, JOURS_HISTORIQUE, DIRECTIONS, CHANNELS, exigerCas,
          type Cas, type Transaction, type Direction, type Channel } from "./cas.ts";
 import { ECHELLES } from "./assumptions.ts";
 import { empreinteDuReleve } from "./empreinte.ts";
-import { lignesEvaluation } from "./evaluation.ts";
+import { lignesEvaluationDe } from "./evaluation.ts";
 import { rendreRapport } from "./rapport.ts";
 
 export const COLONNES_ALERTES = ["alert_id", "account_id", "window_end", "disposition"] as const;
@@ -426,7 +426,7 @@ export function executer(
 }
 
 async function principal(): Promise<void> {
-  for (const l of lignesEvaluation()) console.log(l);
+  for (const l of lignesEvaluationDe("monitoring")) console.log(l);
   refuserDrapeauxInconnus(["--alerts", "--transactions", "--volume"]);
   const arg = (nom: string) => process.argv.find((a) => a.startsWith(`--${nom}=`))?.split("=").slice(1).join("=");
   const cheminAlertes = arg("alerts");
