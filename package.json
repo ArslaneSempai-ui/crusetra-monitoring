@@ -1,5 +1,5 @@
 {
-  "name": "cascade-monitoring",
+  "name": "crusetra-monitoring",
   "version": "0.1.0",
   "description": "Which transaction-monitoring scenario suffices, at which threshold, measured on your own dispositioned alerts. Nothing of yours goes up.",
   "type": "module",

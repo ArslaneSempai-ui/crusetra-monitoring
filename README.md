@@ -17,8 +17,8 @@ No real transaction is public, so the public record of this tool is entirely wri
 generated, and says so: cases we wrote (with their benign look-alikes) and seeded variants,
 kept apart. The measure that counts is yours, on your machine.
 
-It is the third tool of the Crusetra suite, after [Crusetra Routing](https://github.com/ArslaneSempai-ui/cascade-routing)
-(which extraction tier suffices per field) and [Crusetra Screening](https://github.com/ArslaneSempai-ui/cascade-screening)
+It is the third tool of the Crusetra suite, after [Crusetra Routing](https://github.com/ArslaneSempai-ui/crusetra-routing)
+(which extraction tier suffices per field) and [Crusetra Screening](https://github.com/ArslaneSempai-ui/crusetra-screening)
 (which name matcher, at which threshold). Same method, same seal, same key.
 
 <!-- figures:commandes -->
