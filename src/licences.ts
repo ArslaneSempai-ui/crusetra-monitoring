@@ -218,7 +218,24 @@ export function sbom(paquets: Paquet[], nom: string, version: string) {
   };
 }
 
-export function document(paquets: Paquet[], licenceDuDepot: string | null): string {
+/**
+ * The folders under examples/ whose data are NOT under the repository's licence, one factual
+ * sentence each: the folder, the licence it is under, and where its README and licence text are.
+ * A folder is found by shipping the CDLA-Sharing 1.0 text under that exact name. Nothing is said
+ * about what either licence allows; that is for the licence texts, and for a lawyer.
+ */
+export function dossiersSousAutreLicence(racine: string = "."): string[] {
+  const exemples = join(racine, "examples");
+  if (!existsSync(exemples)) return [];
+  return readdirSync(exemples, { withFileTypes: true })
+    .filter((e) => e.isDirectory() && existsSync(join(exemples, e.name, "CDLA-Sharing-1.0.txt")))
+    .map((e) => e.name)
+    .sort()
+    .map((d) => `examples/${d}/ is not under the repository licence: it is under CDLA-Sharing 1.0, `
+      + `see examples/${d}/README.md and examples/${d}/CDLA-Sharing-1.0.txt.`);
+}
+
+export function document(paquets: Paquet[], licenceDuDepot: string | null, sousAutreLicence: string[] = []): string {
   const par = (c: Classe) => paquets.filter((p) => p.classe === c);
   const bloquantes = par("bloquante");
   const aTenir = par("à tenir");
@@ -300,7 +317,9 @@ impede spontaneous adoption, which is not what this repository is for.`
       : "."}`
   : `**This repository declares no licence at all.** On a public repository that means "all rights reserved": nobody may legally use it, including a client who has paid for it. That may well be deliberate (it is the default for a product being sold), but until it is written down, a legal department will stop the sale. To settle: a written commercial licence, or an explicit statement of ownership.`}
 
-## Bill of materials
+${sousAutreLicence.length > 0
+  ? `## Folders under another licence\n\n${sousAutreLicence.map((p) => `- ${p}`).join("\n")}\n\n`
+  : ""}## Bill of materials
 
 \`sbom.json\` accompanies this document, in CycloneDX 1.5 format.
 `;
@@ -321,7 +340,7 @@ function principal() {
   }
   const moi = JSON.parse(readFileSync("package.json", "utf8"));
   const paquets = inventaire();
-  const md = document(paquets, typeof moi.license === "string" ? moi.license : null);
+  const md = document(paquets, typeof moi.license === "string" ? moi.license : null, dossiersSousAutreLicence());
   const bom = JSON.stringify(sbom(paquets, moi.name ?? "crusetra", moi.version ?? "0.0.0"), null, 2) + "\n";
 
   if (controle) {

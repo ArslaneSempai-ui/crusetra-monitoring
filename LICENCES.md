@@ -59,6 +59,10 @@ organisations exclude it from their dependency tree by policy. That does not
 impede a sale, since a buyer goes through the commercial licence anyway; it would
 impede spontaneous adoption, which is not what this repository is for.
 
+## Folders under another licence
+
+- examples/amlworld/ is not under the repository licence: it is under CDLA-Sharing 1.0, see examples/amlworld/README.md and examples/amlworld/CDLA-Sharing-1.0.txt.
+
 ## Bill of materials
 
 `sbom.json` accompanies this document, in CycloneDX 1.5 format.
