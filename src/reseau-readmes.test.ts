@@ -130,3 +130,23 @@ test("witness: a registry import is seen, a node: built-in and a sibling are not
   assert.deepEqual(importsNus(`const x = await import("undici");`), ["undici"]);
   assert.deepEqual(importsNus(`import { test } from "node:test";\nimport { b } from "./b.ts";\nimport fs from "node:fs";`), []);
 });
+
+/**
+ * The statement may promise what this tool's code does, not what npm does. `npm run <script>` starts through the npm
+ * launcher, which is npm's own program and may check the registry (an update notice, say) whatever the script is. So
+ * "uses no network at all", said of a command, overclaims; "opens no connection", said of the tool's code, is what the
+ * imports and src/frontiere.test.ts hold.
+ */
+export const SURPROMESSE = /\buses no network\b|\bno network at all\b/i;
+
+test("the statement promises about the tool's code, never that an npm command touches no network", () => {
+  assert.match(RESEAU, /\bopens no connection\b/, "the statement no longer says that the tool's code opens no connection");
+  assert.doesNotMatch(RESEAU, SURPROMESSE, "the statement claims a command uses no network at all, which the npm launcher it starts through can break");
+});
+
+test("witness: the overclaim is seen in both of its wordings, and the retained wording is not", () => {
+  assert.match("`npm run test` ... uses no network at all: the tool", SURPROMESSE);
+  assert.match("Every command uses no network", SURPROMESSE);
+  assert.match("with no network at all", SURPROMESSE);
+  assert.doesNotMatch("The tool's own code opens no connection", SURPROMESSE);
+});

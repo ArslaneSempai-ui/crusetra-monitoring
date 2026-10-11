@@ -51,7 +51,7 @@ network there is one statement, kept in `src/reseau.ts` and repeated word for wo
 [`examples/amlworld/README.md`](examples/amlworld/README.md):
 
 <!-- figures:reseau -->
-Only `npm ci --ignore-scripts` reaches the network, to get the pinned development dependencies from the npm registry at install time. Every other command, `npm run test`, `npm run measure:yours` and `npm run example:amlworld` included, uses no network at all: the tool has no runtime dependency and imports `node:` built-ins only. No command downloads the AMLworld file: you get it yourself from Kaggle, with your own account, and `npm run example:amlworld` reads that local copy.
+Only `npm ci --ignore-scripts` reaches the network, to get the pinned development dependencies from the npm registry at install time. The code behind every other command, `npm run test`, `npm run measure:yours` and `npm run example:amlworld` included, opens no connection: the tool has no runtime dependency and imports `node:` built-ins only. No command downloads the AMLworld file: you get it yourself from Kaggle, with your own account, and `npm run example:amlworld` reads that local copy.
 <!-- /figures:reseau -->
 
 ## What is measured, assumed, synthetic
@@ -70,7 +70,7 @@ reports are verified against the same public key, [`cle-publique.pem`](cle-publi
 with `npm run verify`.
 
 <!-- figures:tests -->
-**154 tests** across 25 files, counted by running the suite rather than typed here.
+**156 tests** across 25 files, counted by running the suite rather than typed here.
 <!-- /figures:tests -->
 
 ## Licence
