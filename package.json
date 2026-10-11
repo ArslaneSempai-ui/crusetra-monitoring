@@ -10,6 +10,7 @@
   "scripts": {
     "test": "tsc --noEmit && node src/readme.ts --check && node src/licences.ts --check && node --test src/*.test.ts src/*.test.mjs",
     "measure:yours": "node src/your-alerts.ts",
+    "example:amlworld": "node examples/amlworld/map-alerts.ts",
     "optimise": "node src/optimise.ts",
     "figures": "node src/readme.ts",
     "measure": "node src/measure.ts",

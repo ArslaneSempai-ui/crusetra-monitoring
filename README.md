@@ -17,6 +17,10 @@ No real transaction is public, so the public record of this tool is entirely wri
 generated, and says so: cases we wrote (with their benign look-alikes) and seeded variants,
 kept apart. The measure that counts is yours, on your machine.
 
+One public example runs the measure on third-party data, apart from that record:
+[`examples/amlworld/`](examples/amlworld/README.md), the synthetic IBM AMLworld transactions mapped to
+constructed alerts, with its sealed record. Its README says what the mapping is and what it is not.
+
 It is the third tool of the Crusetra suite, after [Crusetra Routing](https://github.com/ArslaneSempai-ui/crusetra-routing)
 (which extraction tier suffices per field) and [Crusetra Screening](https://github.com/ArslaneSempai-ui/crusetra-screening)
 (which name matcher, at which threshold). Same method, same seal, same key.
@@ -28,6 +32,7 @@ It is the third tool of the Crusetra suite, after [Crusetra Routing](https://git
 | `npm run test` | types, the README blocks, the licence inventory, and the suite. Start here; it runs with the network cut |
 | `npm run measure [-- --yes-overwrite]` | the public measure: every scenario at every threshold on cases we wrote (benign cases included) plus declared generated variants, sealed into `releve-public.json` and readable in `RELEVE-PUBLIC.md`: no real transaction is public, and the record says so; it refuses to overwrite a sealed one without the flag |
 | `npm run measure:yours -- --alerts=<csv> --transactions=<csv> [--volume=N]` | your own dispositioned alerts, rebuilt into thirty-day cases from your transactions: recall on confirmed suspicious cases and false-alert rate on benign ones per scenario and threshold, with n and interval; a sealed record and a report beside your file, never a value of yours |
+| `npm run example:amlworld -- --input=<HI-Small_Trans.csv> --out=<new folder>` | the public example: map the IBM AMLworld file, which you download yourself, into constructed dispositioned alerts and their transactions, the two files the command above reads; the folder `examples/amlworld/` holds the sealed record, the licence (CDLA-Sharing 1.0) and what the mapping is and is not |
 | `npm run optimise -- --from=<record> --recall=<min>` | the best trade-off: fewest alerts with the recall lower bound held, or `--alert-budget=<N>` for the highest bounded recall under a monthly alert budget |
 | `npm run sceller -- <record.json>` | seal a record: the content hash that makes a silently edited measurement fail loudly; the same content hash as Crusetra Routing |
 | `npm run verify -- <report>` | check that a report was issued by the holder of the suite's public key, `cle-publique.pem`, without asking us |
@@ -60,11 +65,12 @@ reports are verified against the same public key, [`cle-publique.pem`](cle-publi
 with `npm run verify`.
 
 <!-- figures:tests -->
-**131 tests** across 20 files, counted by running the suite rather than typed here.
+**145 tests** across 22 files, counted by running the suite rather than typed here.
 <!-- /figures:tests -->
 
 ## Licence
 
 The same public licence as Crusetra Routing: non-commercial use without limit of time, a
 thirty-day evaluation on your own records for organisations, a commercial licence for
-production. See [LICENSE](LICENSE) and [LICENCES.md](LICENCES.md).
+production. See [LICENSE](LICENSE) and [LICENCES.md](LICENCES.md). The one exception is the data files of
+`examples/amlworld/`, which stay under CDLA-Sharing 1.0, as the README of that folder says.

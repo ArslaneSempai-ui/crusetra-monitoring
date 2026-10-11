@@ -7,7 +7,7 @@
  *   1. Its README has a "Licence of this folder" section (the form of the CORD example in
  *      Routing): the licence of the data it carries, a link, and the files it covers. When that
  *      licence is CDLA-Sharing 1.0 (IBM AMLworld) the conditions are checked too: the licence
- *      text shipped in the folder, the credit to the provider, a notice that the files were
+ *      text shipped in the folder, unmodified, the credit to the provider, a notice that the files were
  *      changed and which, and the open point for a lawyer (derived alert file: "Enhanced Data",
  *      share-alike, or "Results", free), with the reading we apply while it is open.
  *   2. Each sealed record in it still matches its seal, checked by the real tool
@@ -17,12 +17,13 @@
  * planted folders as well, one defect at a time, so that each rule is shown to fire. A rule that
  * was never seen to fail is not a rule.
  *
- * NOT CHECKED HERE: that the licence text is the official one, byte for byte. Pin its hash in
- * this file when the text is first fetched from cdla.dev, not before.
+ * The licence text is held to the official one by its hash (CDLA_SHA256, read on cdla.dev on
+ * 2026-10-11): "unmodified" (section 3.3) is a byte comparison, not a keyword search.
  */
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
+import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { basename, dirname, join, relative, sep } from "node:path";
@@ -37,6 +38,12 @@ const TITRE = "Licence of this folder";
 const LICENCE_NOMMEE = /CC BY|CC0|Creative Commons|CDLA|Community Data License|ODbL|Open Database License|Apache|\bMIT\b|PolyForm/i;
 const CDLA = /CDLA|Community Data License/i;
 const FICHIER_NOMME = /`([^`\s]+\.(?:csv|tsv|jsonl?|txt|md|py|ts|mjs|pdf))`/g;
+
+/** The official agreement, from its title to the end of section 7.5, as read on https://cdla.dev/sharing-1-0/
+ *  on 2026-10-11 (page chrome removed, no word changed). Pinned here so that a file called
+ *  CDLA-Sharing-1.0.txt that is not that text, by one character, turns this suite red. */
+export const CDLA_SHA256 = "d160c04246619a8d51c0668a44a1485cb00ec545968988544e1adf9f175ec64b";
+const sha256 = (octets: Buffer | string): string => createHash("sha256").update(octets).digest("hex");
 
 /** The files of a folder, recursively, as paths relative to it with forward slashes. */
 function fichiersDe(dossier: string): string[] {
@@ -71,15 +78,14 @@ export function sectionLicence(readme: string): string | null {
 }
 
 /** The CDLA-Sharing 1.0 conditions, on top of the generic section. */
-function fautesCdla(nom: string, readme: string, section: string, dossier: string, presents: string[]): string[] {
+function fautesCdla(nom: string, readme: string, section: string, dossier: string, presents: string[], empreinteLicence: string): string[] {
   const fautes: string[] = [];
   const textes = presents.filter((f) => /cdla/i.test(basename(f)));
-  const texteLivre = textes.some((f) => {
-    const t = readFileSync(join(dossier, f), "utf8");
-    return /Community Data License Agreement/i.test(t) && /Sharing/.test(t) && /Version 1\.0/i.test(t);
-  });
-  if (!texteLivre) {
+  if (textes.length === 0) {
     fautes.push(`${nom}: the CDLA-Sharing 1.0 licence text is not in the folder (a file whose name carries CDLA, holding the agreement)`);
+  } else if (!textes.some((f) => sha256(readFileSync(join(dossier, f))) === empreinteLicence)) {
+    fautes.push(`${nom}: ${textes.join(", ")} does not match the pinned official licence text (sha256 ${empreinteLicence.slice(0, 16)}...): `
+      + "the agreement must ship unmodified (CDLA-Sharing 1.0, section 3.3)");
   }
   if (!/Altman/.test(section) || !/\bIBM\b/.test(section)) {
     fautes.push(`${nom}: the licence section does not credit the provider (Altman, IBM)`);
@@ -101,7 +107,7 @@ function fautesCdla(nom: string, readme: string, section: string, dossier: strin
 }
 
 /** The licence defects of one example folder. */
-export function fautesDeLicence(dossier: string): string[] {
+export function fautesDeLicence(dossier: string, empreinteLicence: string = CDLA_SHA256): string[] {
   const nom = basename(dossier);
   const chemin = join(dossier, "README.md");
   if (!existsSync(chemin)) return [`${nom}: no README.md`];
@@ -117,7 +123,7 @@ export function fautesDeLicence(dossier: string): string[] {
   for (const n of nommes) {
     if (!presents.includes(n)) fautes.push(`${nom}/README.md: the licence section names \`${n}\`, which is not in the folder`);
   }
-  if (CDLA.test(section)) fautes.push(...fautesCdla(nom, readme, section, dossier, presents));
+  if (CDLA.test(section)) fautes.push(...fautesCdla(nom, readme, section, dossier, presents, empreinteLicence));
   return fautes;
 }
 
@@ -161,13 +167,13 @@ test("examples/ exists and holds at least one example", () => {
 
 test("every example README carries its \"Licence of this folder\" section", () => {
   assert.ok(exemples.length >= 1, "no example folder under examples/: this check read nothing");
-  assert.deepEqual(exemples.flatMap(fautesDeLicence), [],
+  assert.deepEqual(exemples.flatMap((d) => fautesDeLicence(d)), [],
     "an example is published without the licence of its data, the credit and the change notice that licence asks for");
 });
 
 test("every sealed record under examples/ still matches its seal", () => {
   assert.ok(exemples.length >= 1, "no example folder under examples/: this check read nothing");
-  assert.deepEqual(exemples.flatMap(fautesDeScelle), [],
+  assert.deepEqual(exemples.flatMap((d) => fautesDeScelle(d)), [],
     "a sealed record was edited after it was sealed (or an example holds none): re-measure it, never re-seal by hand");
 });
 
@@ -188,6 +194,7 @@ const README_BON = [
 ].join("\n");
 
 const TEXTE_CDLA = "Community Data License Agreement - Sharing - Version 1.0\nA stand-in for the real text, for a planted folder.\n";
+const EMPREINTE_STAND_IN = sha256(TEXTE_CDLA);
 
 function releveScelle(valeur: number): string {
   const r: Record<string, unknown> = { kind: "monitoring-record", grille: [valeur, 2, 3] };
@@ -219,8 +226,10 @@ function avecDossier<T>(retoucher: (f: Record<string, string>) => void, travail:
 
 test("witness: a complete CDLA-Sharing example passes both checks, or the rules eat the good case", () => {
   avecDossier(() => {}, (d) => {
-    assert.deepEqual(fautesDeLicence(d), []);
+    assert.deepEqual(fautesDeLicence(d, EMPREINTE_STAND_IN), []);
     assert.deepEqual(fautesDeScelle(d), []);
+    assert.ok(fautesDeLicence(d).some((x) => /does not match the pinned/.test(x)),
+      "the default pin must be the official text's hash, not a stand-in: a stand-in must be refused");
   });
 });
 
@@ -232,7 +241,9 @@ test("witness: the licence check sees each missing piece, one at a time", () => 
     ["no link", (f) => { f["README.md"] = README_BON.replace("(https://cdla.dev/sharing-1-0/)", ""); }, /links no licence text/],
     ["a file that is not there", (f) => { f["README.md"] = README_BON.replace("`alerts.csv`", "`gone.csv`"); }, /`gone\.csv`, which is not in the folder/],
     ["no licence text shipped", (f) => { delete f["CDLA-Sharing-1.0.txt"]; }, /licence text is not in the folder/],
-    ["a licence file that is not the agreement", (f) => { f["CDLA-Sharing-1.0.txt"] = "all rights reserved\n"; }, /licence text is not in the folder/],
+    ["a licence file that is not the agreement", (f) => { f["CDLA-Sharing-1.0.txt"] = "all rights reserved\n"; }, /does not match the pinned/],
+    ["the agreement with one letter changed", (f) => { f["CDLA-Sharing-1.0.txt"] = TEXTE_CDLA.replace("Sharing", "Sharinq"); }, /does not match the pinned/],
+    ["the agreement with a restriction added", (f) => { f["CDLA-Sharing-1.0.txt"] = TEXTE_CDLA + "Non-commercial use only.\n"; }, /does not match the pinned/],
     ["no credit", (f) => { f["README.md"] = README_BON.replace("(Altman, IBM)", ""); }, /does not credit the provider/],
     ["no change notice", (f) => { f["README.md"] = README_BON.replace("were changed from the original", "were kept"); }, /no change notice/],
     ["a data file the section does not name", (f) => { f["extra.csv"] = "a,b\n1,2\n"; }, /data file extra\.csv is not named/],
@@ -241,7 +252,7 @@ test("witness: the licence check sees each missing piece, one at a time", () => 
   ];
   for (const [quoi, retoucher, attendu] of cas) {
     avecDossier(retoucher, (d) => {
-      const fautes = fautesDeLicence(d);
+      const fautes = fautesDeLicence(d, EMPREINTE_STAND_IN);
       assert.ok(fautes.some((x) => attendu.test(x)), `${quoi}: not seen. Faults: ${JSON.stringify(fautes)}`);
     });
   }
