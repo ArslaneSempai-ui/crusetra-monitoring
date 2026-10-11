@@ -29,7 +29,12 @@ const racine = fileURLToPath(new URL("..", import.meta.url));
 const SCEAU = /^[0-9a-f]{16}$/;
 
 /** A sealed record published without a signature on purpose: path from the root, reason, date. */
-export const SANS_SIGNATURE: Record<string, { pourquoi: string; depuis: string }> = {};
+export const SANS_SIGNATURE: Record<string, { pourquoi: string; depuis: string }> = {
+  "examples/amlworld/amlworld-alerts-measured.json": {
+    pourquoi: "sealed by the tool on 2026-10-11 and published unsigned until Arslane signs it: the house key is his to use, and nobody else signs for him",
+    depuis: "2026-10-11",
+  },
+};
 
 /** The tracked JSON files under examples/ that carry a seal at their root, from the root. */
 export function relevesScellesDesExemples(dir: string, suivis: ReadonlySet<string>): string[] {
