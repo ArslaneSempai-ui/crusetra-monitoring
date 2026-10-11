@@ -16,7 +16,10 @@ import { join } from "node:path";
  * `.github/workflows/` holds a job whose matrix names the three systems, whose `runs-on` reads
  * that matrix, and whose steps run `npm test`. A workflow that lists the systems but never
  * runs the suite, or runs it on one system only, does not count. A word in a comment does not
- * count either: comments are stripped before anything is read.
+ * count either: comments are stripped before anything is read. Nor does a matrix that excludes
+ * one of the three systems (even for one Node version), a `npm test` step that is dead (`if:`
+ * anything but always true) or whose failure is tolerated (`continue-on-error`), or a job that
+ * tolerates failure as a whole: the file would name three systems and the chain try fewer.
  *
  * No YAML parser, because the repository has no dependency to spare for one: plain line logic
  * over the shapes a workflow actually takes (inline `[a, b]` list or block `- a` list; `run:`
@@ -57,38 +60,118 @@ function jobs(texte: string): Map<string, string[]> {
   return resultat;
 }
 
-/** The systems named under `matrix: os:`, whether inline or as a block list. */
-function systemesDeLaMatrice(job: string[]): string[] {
+/** The lines under `matrix:`, up to the first line that leaves it. */
+function blocDeLaMatrice(job: string[]): string[] {
   const m = job.findIndex((l) => /^\s+matrix:\s*$/.test(l));
   if (m === -1) return [];
-  const o = job.findIndex((l, i) => i > m && /^\s+os:/.test(l));
+  const bloc: string[] = [];
+  for (const l of job.slice(m + 1)) {
+    if (indent(l) <= indent(job[m]!)) break;
+    bloc.push(l);
+  }
+  return bloc;
+}
+
+/** The index, in the matrix block, of one of the matrix's own keys (not a key nested under another). */
+function cleDeLaMatrice(bloc: string[], cle: string): number {
+  if (bloc.length === 0) return -1;
+  const propre = Math.min(...bloc.map(indent));
+  return bloc.findIndex((l) => indent(l) === propre && new RegExp(`^\\s+${cle}:`).test(l));
+}
+
+/** The systems named under `matrix: os:`, whether inline or as a block list. */
+function systemesDeLaMatrice(job: string[]): string[] {
+  const bloc = blocDeLaMatrice(job);
+  const o = cleDeLaMatrice(bloc, "os");
   if (o === -1) return [];
-  const inline = /^\s+os:\s*\[(.*)\]\s*$/.exec(job[o]!);
+  const inline = /^\s+os:\s*\[(.*)\]\s*$/.exec(bloc[o]!);
   if (inline) return inline[1]!.split(",").map((s) => s.trim().replace(/^['"]|['"]$/g, ""));
   const noms: string[] = [];
-  for (const l of job.slice(o + 1)) {
+  for (const l of bloc.slice(o + 1)) {
     const item = /^\s+-\s+(.+?)\s*$/.exec(l);
-    if (!item || indent(l) < indent(job[o]!)) break;
+    if (!item || indent(l) < indent(bloc[o]!)) break;
     noms.push(item[1]!.replace(/^['"]|['"]$/g, ""));
   }
   return noms;
 }
 
-/** The commands of the job's `run:` steps, one entry per command line. */
-function commandes(job: string[]): string[] {
-  const out: string[] = [];
+/** The systems that `matrix: exclude:` names, in any shape. A system the matrix excludes, even
+ *  for one Node version only, is a system the chain does not fully try: the job does not count. */
+function systemesExclus(job: string[]): string[] {
+  const bloc = blocDeLaMatrice(job);
+  const e = cleDeLaMatrice(bloc, "exclude");
+  if (e === -1) return [];
+  const base = indent(bloc[e]!);
+  const dedans = [bloc[e]!];
+  for (const l of bloc.slice(e + 1)) {
+    /* La liste peut s'écrire au niveau de sa clé (`exclude:` puis `- os: ...` sans retrait). */
+    if (indent(l) < base || (indent(l) === base && !/^\s*-\s/.test(l))) break;
+    dedans.push(l);
+  }
+  return SYSTEMS.filter((s) => dedans.some((l) => l.includes(s)));
+}
+
+/** The step's own `key: value` texts: the keys of the step holding job[i], not the body of a `|` block. */
+function clesDuPas(job: string[], i: number): string[] {
+  let debut = i;
+  if (!/^\s*-\s/.test(job[i]!)) {
+    debut = -1;
+    for (let j = i - 1; j >= 0; j--) {
+      if (/^\s*-\s/.test(job[j]!) && indent(job[j]!) < indent(job[i]!)) { debut = j; break; }
+    }
+    if (debut === -1) return [];
+  }
+  const base = indent(job[debut]!);
+  const cles = [job[debut]!.replace(/^\s*-\s+/, "").trim()];
+  for (let k = debut + 1; k < job.length && indent(job[k]!) > base; k++) {
+    if (indent(job[k]!) === base + 2) cles.push(job[k]!.trim());
+  }
+  return cles;
+}
+
+/** The commands of the job's `run:` steps, one entry per command line, with the keys of their step. */
+function commandes(job: string[]): { commande: string; cles: string[] }[] {
+  const out: { commande: string; cles: string[] }[] = [];
   for (let i = 0; i < job.length; i++) {
     const r = /^(\s*)(?:-\s+)?run:\s*(.*)$/.exec(job[i]!);
     if (!r) continue;
+    const cles = clesDuPas(job, i);
     const reste = r[2]!.trim();
     if (/^[|>][+-]?$/.test(reste)) {
       const base = indent(job[i]!);
-      for (let j = i + 1; j < job.length && indent(job[j]!) > base; j++) out.push(job[j]!.trim());
+      for (let j = i + 1; j < job.length && indent(job[j]!) > base; j++) out.push({ commande: job[j]!.trim(), cles });
     } else {
-      out.push(reste);
+      out.push({ commande: reste, cles });
     }
   }
   return out;
+}
+
+/** The value of a key among `key: value` texts, quotes and `${{ }}` taken off; undefined when absent. */
+function valeur(cles: string[], nom: string): string | undefined {
+  const c = cles.find((k) => k.startsWith(`${nom}:`));
+  if (c === undefined) return undefined;
+  return c.slice(nom.length + 1).trim()
+    .replace(/^(['"])(.*)\1$/, "$2")
+    .replace(/^\$\{\{\s*(.*?)\s*\}\}$/, "$1")
+    .trim();
+}
+
+/** A step that really runs, and whose failure counts: no condition but an always-true one, and no
+ *  failure tolerated (`continue-on-error` absent or the literal false). */
+function pasQuiCompte(cles: string[]): boolean {
+  const si = valeur(cles, "if");
+  if (si !== undefined && !/^(true|always\(\)|success\(\))$/.test(si)) return false;
+  const tolere = valeur(cles, "continue-on-error");
+  return tolere === undefined || tolere === "false";
+}
+
+/** A job whose own failure does not fail the run (`continue-on-error` on the job, not on a step). */
+function jobToleraLEchec(job: string[]): boolean {
+  if (job.length === 0) return false;
+  const propre = Math.min(...job.map(indent));
+  const tolere = valeur(job.filter((l) => indent(l) === propre).map((l) => l.trim()), "continue-on-error");
+  return tolere !== undefined && tolere !== "false";
 }
 
 const LANCE_LES_CAS = /(^|&&|;|\|\|)\s*npm test(\s|$)/;
@@ -100,8 +183,9 @@ function jobsSurTroisSystemes(texte: string): string[] {
     const systemes = systemesDeLaMatrice(job);
     const toutes = SYSTEMS.every((s) => systemes.includes(s));
     const lit = job.some((l) => /^\s+runs-on:\s*\$\{\{\s*matrix\.os\s*\}\}\s*$/.test(l));
-    const lance = commandes(job).some((c) => LANCE_LES_CAS.test(c));
-    if (toutes && lit && lance) trouves.push(nom);
+    const lance = commandes(job).some((c) => LANCE_LES_CAS.test(c.commande) && pasQuiCompte(c.cles));
+    const entier = systemesExclus(job).length === 0 && !jobToleraLEchec(job);
+    if (toutes && lit && lance && entier) trouves.push(nom);
   }
   return trouves;
 }
@@ -152,6 +236,39 @@ test("témoin : la lecture des chaînes voit un job complet, et refuse les faute
 
   const matriceIgnoree = complet.replace("runs-on: ${{ matrix.os }}", "runs-on: ubuntu-latest");
   assert.deepEqual(jobsSurTroisSystemes(matriceIgnoree), [], "une matrice que runs-on ne lit pas est acceptée.");
+
+  /* Une matrice qui nomme les trois systèmes mais en retire un par `exclude:`, ou un pas
+     `npm test` qui ne tourne pas (`if:` faux) ou dont l'échec ne compte pas
+     (`continue-on-error`) : le fichier dit trois systèmes, la chaîne n'en éprouve que deux. */
+  const avecMatrice = (ajout: string) => complet.replace("        node: ['24', '26']", `        node: ['24', '26']\n${ajout}`);
+  assert.deepEqual(jobsSurTroisSystemes(avecMatrice("        exclude:\n          - os: windows-latest\n            node: '26'")), [],
+    "une matrice qui exclut Windows (même pour une seule version de Node) est acceptée.");
+  assert.deepEqual(jobsSurTroisSystemes(avecMatrice("        exclude:\n          - {os: macos-latest, node: '24'}")), [],
+    "une exclusion écrite en ligne est acceptée.");
+  assert.deepEqual(jobsSurTroisSystemes(avecMatrice("        exclude: [{os: ubuntu-latest}]")), [],
+    "une exclusion en liste inline est acceptée.");
+  assert.deepEqual(jobsSurTroisSystemes(avecMatrice("        exclude:\n        - os: windows-latest")), [],
+    "une exclusion dont la liste est au niveau de sa clé est acceptée.");
+  assert.deepEqual(jobsSurTroisSystemes(avecMatrice("        exclude:\n          - os: ubuntu-20.04")), ["test"],
+    "une exclusion qui ne touche aucun des trois systèmes est refusée : la garde déborde.");
+
+  const pas = (ligne: string) => complet.replace("      - run: npm test", `      - ${ligne}\n        run: npm test`);
+  assert.deepEqual(jobsSurTroisSystemes(pas("if: false")), [], "un pas `npm test` à `if: false` est accepté.");
+  assert.deepEqual(jobsSurTroisSystemes(pas("if: ${{ false }}")), [], "un pas `npm test` à `if: ${{ false }}` est accepté.");
+  assert.deepEqual(jobsSurTroisSystemes(pas("if: matrix.os != 'windows-latest'")), [],
+    "un pas `npm test` qui saute un système est accepté.");
+  assert.deepEqual(jobsSurTroisSystemes(pas("if: success()")), ["test"], "`if: success()` est refusé : la garde déborde.");
+  assert.deepEqual(jobsSurTroisSystemes(pas("continue-on-error: true")), [],
+    "un pas `npm test` dont l'échec ne compte pas est accepté.");
+  assert.deepEqual(jobsSurTroisSystemes(pas("continue-on-error: ${{ matrix.os == 'windows-latest' }}")), [],
+    "un échec toléré sur un système par expression est accepté.");
+  assert.deepEqual(jobsSurTroisSystemes(pas("continue-on-error: false")), ["test"],
+    "`continue-on-error: false` est refusé : la garde déborde.");
+  assert.deepEqual(jobsSurTroisSystemes(complet.replace("    runs-on: ${{ matrix.os }}", "    runs-on: ${{ matrix.os }}\n    continue-on-error: true")), [],
+    "un job entier qui tolère l'échec est accepté.");
+  const deuxPas = complet.replace("      - run: npm test", "      - if: false\n        run: npm test\n      - run: npm test");
+  assert.deepEqual(jobsSurTroisSystemes(deuxPas), ["test"],
+    "un pas mort ne doit pas annuler un autre pas `npm test` qui tourne vraiment.");
 
   /* Un checkout Windows réécrit les fins de ligne en CRLF : le même workflow doit être lu de
      la même façon, sinon le témoin rougirait sur la machine même qu'il garde. */
