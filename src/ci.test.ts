@@ -105,7 +105,7 @@ function systemesExclus(job: string[]): string[] {
   const base = indent(bloc[e]!);
   const dedans = [bloc[e]!];
   for (const l of bloc.slice(e + 1)) {
-    /* La liste peut s'écrire au niveau de sa clé (`exclude:` puis `- os: ...` sans retrait). */
+    /* The list may sit at the level of its key (`exclude:` then `- os: ...` with no indent). */
     if (indent(l) < base || (indent(l) === base && !/^\s*-\s/.test(l))) break;
     dedans.push(l);
   }
@@ -207,8 +207,8 @@ test("la suite tourne sur ubuntu, macOS et Windows : un job à matrice lance `np
 });
 
 test("témoin : la lecture des chaînes voit un job complet, et refuse les fautes qui lui ressemblent", () => {
-  /* Le pas de suite d'un job complet : borné, parce qu'une suite qui se fige sous Windows doit
-     être une défaillance nommée et non un job de six heures. */
+  /* The suite step of a complete job: capped, because a suite that freezes on Windows must be
+     a named failure and not a six-hour job. */
   const SUITE = "      - timeout-minutes: 60\n        run: npm test";
   const complet = [
     "name: tests",
@@ -243,9 +243,9 @@ test("témoin : la lecture des chaînes voit un job complet, et refuse les faute
   const matriceIgnoree = complet.replace("runs-on: ${{ matrix.os }}", "runs-on: ubuntu-latest");
   assert.deepEqual(jobsSurTroisSystemes(matriceIgnoree), [], "une matrice que runs-on ne lit pas est acceptée.");
 
-  /* Une matrice qui nomme les trois systèmes mais en retire un par `exclude:`, ou un pas
-     `npm test` qui ne tourne pas (`if:` faux) ou dont l'échec ne compte pas
-     (`continue-on-error`) : le fichier dit trois systèmes, la chaîne n'en éprouve que deux. */
+  /* A matrix that names the three systems but removes one through `exclude:`, or an `npm test`
+     step that does not run (`if:` false) or whose failure does not count (`continue-on-error`):
+     the file says three systems, the chain tries fewer. */
   const avecMatrice = (ajout: string) => complet.replace("        node: ['24', '26']", `        node: ['24', '26']\n${ajout}`);
   assert.deepEqual(jobsSurTroisSystemes(avecMatrice("        exclude:\n          - os: windows-latest\n            node: '26'")), [],
     "une matrice qui exclut Windows (même pour une seule version de Node) est acceptée.");
@@ -276,9 +276,9 @@ test("témoin : la lecture des chaînes voit un job complet, et refuse les faute
   assert.deepEqual(jobsSurTroisSystemes(deuxPas), ["test"],
     "un pas mort ne doit pas annuler un autre pas `npm test` qui tourne vraiment.");
 
-  /* Sans délai, une suite qui se fige tient le job jusqu'à ce que quelqu'un l'annule : le
-     premier tour Windows de Routing (2026-09-29) est resté muet ainsi. Le délai doit être sur
-     le pas `npm test` lui-même, et être un nombre de minutes. */
+  /* Without a cap, a suite that freezes holds the job until someone cancels it: the first
+     Windows run of Routing's matrix (2026-09-29) went silent that way. The cap must sit on the
+     `npm test` step itself, and be a number of minutes. */
   assert.deepEqual(jobsSurTroisSystemes(complet.replace(SUITE, "      - run: npm test")), [],
     "un pas `npm test` sans `timeout-minutes` est accepté.");
   assert.deepEqual(jobsSurTroisSystemes(complet
@@ -290,8 +290,8 @@ test("témoin : la lecture des chaînes voit un job complet, et refuse les faute
   assert.deepEqual(jobsSurTroisSystemes(complet.replace("timeout-minutes: 60", "timeout-minutes: ${{ matrix.delai }}")), [],
     "un délai qui n'est pas un nombre de minutes écrit est accepté.");
 
-  /* Un checkout Windows réécrit les fins de ligne en CRLF : le même workflow doit être lu de
-     la même façon, sinon le témoin rougirait sur la machine même qu'il garde. */
+  /* A Windows checkout rewrites line endings to CRLF: the same workflow must be read the same
+     way, or the witness would go red on the very machine it guards. */
   assert.deepEqual(jobsSurTroisSystemes(`${complet}\n`.replace(/\n/g, "\r\n")), ["test"],
     "un workflow à fins de ligne CRLF n'est pas lu : `run:` et les commentaires se lisent mal avec le retour chariot.");
   assert.deepEqual(jobsSurTroisSystemes(enBloc.replace(/\n/g, "\r\n")), ["test"],

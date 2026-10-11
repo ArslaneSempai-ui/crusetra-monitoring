@@ -45,7 +45,7 @@ function imposeLF(texte: string): boolean {
   return texteReconnu && a.get("eol") === "lf";
 }
 
-test("le .gitattributes de la racine impose LF à tout fichier texte, et git l'applique", () => {
+test("le .gitattributes de la racine impose LF à tout fichier texte, et git l'applique", (t) => {
   const chemin = join(RACINE, ".gitattributes");
   assert.ok(existsSync(chemin),
     ".gitattributes n'existe pas à la racine : un checkout Windows réécrit chaque fichier texte en CRLF, "
@@ -54,14 +54,15 @@ test("le .gitattributes de la racine impose LF à tout fichier texte, et git l'a
   assert.ok(imposeLF(readFileSync(chemin, "utf8")),
     ".gitattributes ne fixe pas `eol=lf` sur `*` (avec `text` ou `text=auto`) : la fin de ligne dépend alors du réglage local de git.");
 
-  /* Ce que git retient vraiment, pas seulement ce que le fichier dit : un fichier lu mais que
-     git n'applique pas (mauvais nom, mauvais dossier) ne protège rien. */
+  /* What git really applies, not only what the file says: a file that is read but that git does
+     not apply (wrong name, wrong folder) protects nothing. */
   let sortie: string;
   try {
     sortie = execFileSync("git", ["-C", RACINE, "check-attr", "eol", "--", "README.md", "package.json", "src/figures.ts"],
       { encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] });
   } catch {
-    return; // pas un dépôt git ici (archive) : le fichier a été vérifié ci-dessus
+    /* Not a git checkout here (an archive): the file itself was checked above, git's reading of it cannot be. */
+    return t.skip("pas un dépôt git ici : le fichier est vérifié, mais pas ce que git en retient");
   }
   const lignes = sortie.trim().split(/\r?\n/);
   assert.equal(lignes.length, 3, `git check-attr devait répondre pour trois fichiers : ${sortie}`);
