@@ -172,8 +172,8 @@ export function rendreRapport(m: MesureAlertes): string {
   l.push(``);
   l.push(`No value from your files (no account_id, no amount, no transaction date, no country)`);
   l.push(`appears in this report or in the sealed record; verdicts are keyed by your alert_id and`);
-  l.push(`carry scores only. The alert ids and the file names are yours and DO survive: choose`);
-  l.push(`them opaque.`);
+  l.push(`carry your analyst's disposition and whether the case had history, never a score. The`);
+  l.push(`alert ids and the file names are yours and DO survive: choose them opaque.`);
   l.push(``);
   return l.join("\n");
 }

@@ -140,8 +140,9 @@ test("les cas sans historique sont comptés à part, et le zscore factice y rend
   const m = mesureDe([0.9, 0.9, 0.9, 0.9, 0.9, 0.9], 24, { historique: false });
   assert.equal(m.source.sansHistorique, 30);
   assert.equal(m.verdicts["s-0"]!.sansHistorique, true);
-  assert.equal(m.verdicts["s-0"]!.scores.zscore, 0, "un scénario relatif sans historique rend 0");
-  assert.ok(m.verdicts["s-0"]!.scores.amount! > 0.8, "un scénario absolu note quand même");
+  /* the verdicts no longer carry scores (record-sans-score.test.ts): the cells say it */
+  assert.ok(m.paliers.zscore!.cellules.every((c) => c.tirees === 0), "un scénario relatif sans historique rend 0 : aucune cellule ne tire");
+  assert.ok(m.paliers.amount!.cellules.find((c) => c.seuil === 0.8)!.tirees > 0, "un scénario absolu note quand même");
 });
 
 /* ─── la grille ─── */
@@ -222,7 +223,8 @@ test("le relevé et le rapport ne portent AUCUNE valeur du client, et le détect
   /* CONTRE-ÉPREUVE : la recherche sait trouver — un émis fabriqué qui fuit est vu. */
   assert.ok(JSON.stringify({ fuite: SENTINELLES[0] }).includes(SENTINELLES[0]!));
   assert.equal(mesure.verdicts["al-0"]!.disposition, "suspicious");
-  assert.ok(typeof mesure.verdicts["al-0"]!.scores.amount === "number");
+  assert.deepEqual(Object.keys(mesure.verdicts["al-0"]!).sort(), ["disposition", "sansHistorique"],
+    "a verdict holds the disposition and the history flag, never a score");
 });
 
 /* ─── le scellé ─── */
