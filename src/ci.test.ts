@@ -20,7 +20,8 @@ import { join } from "node:path";
  *
  * No YAML parser, because the repository has no dependency to spare for one: plain line logic
  * over the shapes a workflow actually takes (inline `[a, b]` list or block `- a` list; `run:`
- * as a one-liner or as a `|` block).
+ * as a one-liner or as a `|` block; LF or CRLF line endings, because a Windows checkout may
+ * hand this very file back with a carriage return per line).
  *
  * The witness case plays the refusals on fabricated workflows: without it, a parser that reads
  * nothing would turn a missing file into the only red, and a present-but-wrong file into green.
@@ -38,7 +39,7 @@ const indent = (l: string) => l.length - l.trimStart().length;
 
 /** The jobs of a workflow: name -> its lines (comments stripped, blank lines dropped). */
 function jobs(texte: string): Map<string, string[]> {
-  const lignes = texte.split("\n").map(sansCommentaire).filter((l) => l.trim() !== "");
+  const lignes = texte.split(/\r?\n/).map(sansCommentaire).filter((l) => l.trim() !== "");
   const debut = lignes.findIndex((l) => /^jobs:\s*$/.test(l));
   const resultat = new Map<string, string[]>();
   if (debut === -1) return resultat;
@@ -118,7 +119,7 @@ test("la suite tourne sur ubuntu, macOS et Windows : un job à matrice lance `np
     + "lue par runs-on (`${{ matrix.os }}`), et dont les pas lancent `npm test`.");
 });
 
-test("témoin : la lecture des chaînes voit un job complet, et refuse les quatre fautes qui lui ressemblent", () => {
+test("témoin : la lecture des chaînes voit un job complet, et refuse les fautes qui lui ressemblent", () => {
   const complet = [
     "name: tests",
     "jobs:",
@@ -151,4 +152,13 @@ test("témoin : la lecture des chaînes voit un job complet, et refuse les quatr
 
   const matriceIgnoree = complet.replace("runs-on: ${{ matrix.os }}", "runs-on: ubuntu-latest");
   assert.deepEqual(jobsSurTroisSystemes(matriceIgnoree), [], "une matrice que runs-on ne lit pas est acceptée.");
+
+  /* Un checkout Windows réécrit les fins de ligne en CRLF : le même workflow doit être lu de
+     la même façon, sinon le témoin rougirait sur la machine même qu'il garde. */
+  assert.deepEqual(jobsSurTroisSystemes(`${complet}\n`.replace(/\n/g, "\r\n")), ["test"],
+    "un workflow à fins de ligne CRLF n'est pas lu : `run:` et les commentaires se lisent mal avec le retour chariot.");
+  assert.deepEqual(jobsSurTroisSystemes(enBloc.replace(/\n/g, "\r\n")), ["test"],
+    "la forme en liste de blocs et `run: |`, en CRLF, n'est pas lue.");
+  assert.deepEqual(jobsSurTroisSystemes(sansWindows.replace(/\n/g, "\r\n")), [],
+    "une matrice sans Windows est acceptée dès qu'elle est en CRLF.");
 });
