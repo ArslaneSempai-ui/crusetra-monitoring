@@ -28,7 +28,7 @@ It is the third tool of the Crusetra suite, after [Crusetra Routing](https://git
 <!-- figures:commandes -->
 | Command | What it does, in the order that makes sense |
 |---|---|
-| `npm ci --ignore-scripts` | install exactly the versions the lockfile pins, and run no install script from any dependency; the only command that needs the network: this tool downloads nothing else, ever |
+| `npm ci --ignore-scripts` | install exactly the versions the lockfile pins, and run no install script from any dependency; it reaches the npm registry, as the network statement under "What leaves your machine" says |
 | `npm run test` | types, the README blocks, the licence inventory, and the suite. Start here; it runs with the network cut |
 | `npm run measure [-- --yes-overwrite]` | the public measure: every scenario at every threshold on cases we wrote (benign cases included) plus declared generated variants, sealed into `releve-public.json` and readable in `RELEVE-PUBLIC.md`: no real transaction is public, and the record says so; it refuses to overwrite a sealed one without the flag |
 | `npm run measure:yours -- --alerts=<csv> --transactions=<csv> [--volume=N]` | your own dispositioned alerts, rebuilt into thirty-day cases from your transactions: recall on confirmed suspicious cases and false-alert rate on benign ones per scenario and threshold, with n and interval; a sealed record and a report beside your file, never a value of yours |
@@ -45,9 +45,14 @@ Node 24 or newer, on **macOS or Linux**. Windows has not been tested and is not 
 
 ## What leaves your machine
 
-Nothing. This tool has no list to download and no model to fetch: every command runs with
-the network cut, and a test reads every source so that no module ever grows a network call
-(`src/frontiere.test.ts`).
+Nothing. This tool has no list to download and no model to fetch, and a test reads every
+source so that no module ever grows a network call (`src/frontiere.test.ts`). About the
+network there is one statement, kept in `src/reseau.ts` and repeated word for word in
+[`examples/amlworld/README.md`](examples/amlworld/README.md):
+
+<!-- figures:reseau -->
+Only `npm ci --ignore-scripts` reaches the network, to get the pinned development dependencies from the npm registry at install time. Every other command, `npm run test`, `npm run measure:yours` and `npm run example:amlworld` included, uses no network at all: the tool has no runtime dependency and imports `node:` built-ins only. No command downloads the AMLworld file: you get it yourself from Kaggle, with your own account, and `npm run example:amlworld` reads that local copy.
+<!-- /figures:reseau -->
 
 ## What is measured, assumed, synthetic
 
@@ -65,7 +70,7 @@ reports are verified against the same public key, [`cle-publique.pem`](cle-publi
 with `npm run verify`.
 
 <!-- figures:tests -->
-**150 tests** across 24 files, counted by running the suite rather than typed here.
+**154 tests** across 25 files, counted by running the suite rather than typed here.
 <!-- /figures:tests -->
 
 ## Licence

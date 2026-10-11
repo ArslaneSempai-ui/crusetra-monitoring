@@ -9,6 +9,9 @@
  *   tests      « N tests across M files » compté EN LANÇANT LA SUITE (les tests d'une boucle
  *              n'existent qu'à l'exécution), les fichiers lus dans le script `test` ; jamais recopié
  *
+ * A third block, `reseau`, is the network statement of src/reseau.ts, printed word for word in
+ * README.md and in examples/amlworld/README.md (src/reseau-readmes.test.ts holds both to it).
+ *
  * Chaque commande ajoutée par un lot ajoute sa ligne ICI, pas dans le README : le README
  * suit. Un lot qui ajoute un test n'a rien à faire : le compte suit tout seul.
  */
@@ -17,10 +20,11 @@ import { readdirSync, readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { join } from "node:path";
 import { run, table } from "./figures.ts";
+import { RESEAU } from "./reseau.ts";
 
 /* ─── les commandes, dans l'ordre où elles ont un sens ─── */
 export const COMMANDES: [string, string][] = [
-  ["npm ci --ignore-scripts", "install exactly the versions the lockfile pins, and run no install script from any dependency; the only command that needs the network: this tool downloads nothing else, ever"],
+  ["npm ci --ignore-scripts", "install exactly the versions the lockfile pins, and run no install script from any dependency; it reaches the npm registry, as the network statement under \"What leaves your machine\" says"],
   ["npm run test", "types, the README blocks, the licence inventory, and the suite. Start here; it runs with the network cut"],
   ["npm run measure [-- --yes-overwrite]", "the public measure: every scenario at every threshold on cases we wrote (benign cases included) plus declared generated variants, sealed into `releve-public.json` and readable in `RELEVE-PUBLIC.md`: no real transaction is public, and the record says so; it refuses to overwrite a sealed one without the flag"],
   ["npm run measure:yours -- --alerts=<csv> --transactions=<csv> [--volume=N]", "your own dispositioned alerts, rebuilt into thirty-day cases from your transactions: recall on confirmed suspicious cases and false-alert rate on benign ones per scenario and threshold, with n and interval; a sealed record and a report beside your file, never a value of yours"],
@@ -85,6 +89,10 @@ const blocs = {
   commandes: table(["Command", "What it does, in the order that makes sense"],
     COMMANDES.map(([c, quoi]) => [`\`${c}\``, quoi])),
   tests: `**${n} tests** across ${fichiers.length} files, counted by running the suite rather than typed here.`,
+  // The network statement, written once in src/reseau.ts and printed in both READMEs.
+  reseau: RESEAU,
 };
 
 run(fileURLToPath(new URL("../README.md", import.meta.url)), blocs);
+// The example's README carries the same statement, word for word, and nothing else generated.
+run(fileURLToPath(new URL("../examples/amlworld/README.md", import.meta.url)), { reseau: RESEAU });

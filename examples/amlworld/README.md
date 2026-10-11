@@ -47,8 +47,13 @@ The whole story is the header of `map-alerts.ts`; in short:
 
 ## Run it again
 
-The tool downloads nothing; you fetch the dataset yourself from the Kaggle page above (a Kaggle login is needed),
-and this is the only step that needs the network.
+The network statement of this tool, repeated here word for word from the main README and kept in `src/reseau.ts`:
+
+<!-- figures:reseau -->
+Only `npm ci --ignore-scripts` reaches the network, to get the pinned development dependencies from the npm registry at install time. Every other command, `npm run test`, `npm run measure:yours` and `npm run example:amlworld` included, uses no network at all: the tool has no runtime dependency and imports `node:` built-ins only. No command downloads the AMLworld file: you get it yourself from Kaggle, with your own account, and `npm run example:amlworld` reads that local copy.
+<!-- /figures:reseau -->
+
+The file to get is `HI-Small_Trans.csv`, from the Kaggle page above (a Kaggle login is needed).
 
 ```
 node examples/amlworld/map-alerts.ts --input=<HI-Small_Trans.csv> --out=<a new folder>
