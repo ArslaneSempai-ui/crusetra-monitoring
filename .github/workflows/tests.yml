@@ -36,4 +36,8 @@ jobs:
       # any dependency runs.
       - run: npm ci --ignore-scripts
 
-      - run: npm test
+      # A hang is a named failure, not a six-hour job: the first Windows run of Routing's matrix
+      # (2026-09-29) went silent and ran until someone cancelled it. The same cap as Routing's.
+      - name: suite
+        timeout-minutes: 60
+        run: npm test

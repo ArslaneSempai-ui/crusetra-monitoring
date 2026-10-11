@@ -19,7 +19,8 @@ import { join } from "node:path";
  * count either: comments are stripped before anything is read. Nor does a matrix that excludes
  * one of the three systems (even for one Node version), a `npm test` step that is dead (`if:`
  * anything but always true) or whose failure is tolerated (`continue-on-error`), or a job that
- * tolerates failure as a whole: the file would name three systems and the chain try fewer.
+ * tolerates failure as a whole: the file would name three systems and the chain try fewer. The
+ * `npm test` step must also carry a `timeout-minutes`: a hang is then a named failure.
  *
  * No YAML parser, because the repository has no dependency to spare for one: plain line logic
  * over the shapes a workflow actually takes (inline `[a, b]` list or block `- a` list; `run:`
@@ -157,13 +158,15 @@ function valeur(cles: string[], nom: string): string | undefined {
     .trim();
 }
 
-/** A step that really runs, and whose failure counts: no condition but an always-true one, and no
- *  failure tolerated (`continue-on-error` absent or the literal false). */
+/** A step that really runs, whose failure counts, and whose hang is a named failure: no condition
+ *  but an always-true one, no failure tolerated (`continue-on-error` absent or the literal false),
+ *  and a `timeout-minutes` written as a positive number. */
 function pasQuiCompte(cles: string[]): boolean {
   const si = valeur(cles, "if");
   if (si !== undefined && !/^(true|always\(\)|success\(\))$/.test(si)) return false;
   const tolere = valeur(cles, "continue-on-error");
-  return tolere === undefined || tolere === "false";
+  if (tolere !== undefined && tolere !== "false") return false;
+  return /^[1-9]\d*$/.test(valeur(cles, "timeout-minutes") ?? "");
 }
 
 /** A job whose own failure does not fail the run (`continue-on-error` on the job, not on a step). */
@@ -200,10 +203,13 @@ test("la suite tourne sur ubuntu, macOS et Windows : un job à matrice lance `np
     jobsSurTroisSystemes(readFileSync(join(WORKFLOWS, f), "utf8")).map((j) => `${f}:${j}`));
   assert.ok(retenus.length > 0,
     `aucun job de ${fichiers.join(", ")} ne tient une matrice os avec ${SYSTEMS.join(", ")}, `
-    + "lue par runs-on (`${{ matrix.os }}`), et dont les pas lancent `npm test`.");
+    + "lue par runs-on (`${{ matrix.os }}`), et dont un pas vivant, borné par `timeout-minutes`, lance `npm test`.");
 });
 
 test("témoin : la lecture des chaînes voit un job complet, et refuse les fautes qui lui ressemblent", () => {
+  /* Le pas de suite d'un job complet : borné, parce qu'une suite qui se fige sous Windows doit
+     être une défaillance nommée et non un job de six heures. */
+  const SUITE = "      - timeout-minutes: 60\n        run: npm test";
   const complet = [
     "name: tests",
     "jobs:",
@@ -215,23 +221,23 @@ test("témoin : la lecture des chaînes voit un job complet, et refuse les faute
     "    runs-on: ${{ matrix.os }}",
     "    steps:",
     "      - run: npm ci --ignore-scripts",
-    "      - run: npm test",
+    SUITE,
   ].join("\n");
   assert.deepEqual(jobsSurTroisSystemes(complet), ["test"], "un job complet n'est pas vu : la lecture ne regarde pas.");
 
   const enBloc = complet
     .replace("os: [ubuntu-latest, macos-latest, windows-latest]",
       "os:\n          - ubuntu-latest\n          - macos-latest\n          - 'windows-latest'")
-    .replace("      - run: npm test", "      - name: suite\n        run: |\n          set -o pipefail\n          npm test 2>&1 | tee suite.txt");
+    .replace(SUITE, "      - name: suite\n        timeout-minutes: 60\n        run: |\n          set -o pipefail\n          npm test 2>&1 | tee suite.txt");
   assert.deepEqual(jobsSurTroisSystemes(enBloc), ["test"], "la matrice en liste de blocs, ou `run: |`, n'est pas vue.");
 
   const sansWindows = complet.replace(", windows-latest]", "]");
   assert.deepEqual(jobsSurTroisSystemes(sansWindows), [], "une matrice sans Windows est acceptée.");
 
-  const jamaisLance = complet.replace("      - run: npm test", "      - run: npm run build");
+  const jamaisLance = complet.replace(SUITE, "      - run: npm run build");
   assert.deepEqual(jobsSurTroisSystemes(jamaisLance), [], "un job qui ne lance pas `npm test` est accepté.");
 
-  const enCommentaire = complet.replace("      - run: npm test", "      # - run: npm test\n      - name: npm test");
+  const enCommentaire = complet.replace(SUITE, "      # - run: npm test\n      - name: npm test");
   assert.deepEqual(jobsSurTroisSystemes(enCommentaire), [], "`npm test` dans un commentaire ou un nom de pas est accepté.");
 
   const matriceIgnoree = complet.replace("runs-on: ${{ matrix.os }}", "runs-on: ubuntu-latest");
@@ -252,7 +258,7 @@ test("témoin : la lecture des chaînes voit un job complet, et refuse les faute
   assert.deepEqual(jobsSurTroisSystemes(avecMatrice("        exclude:\n          - os: ubuntu-20.04")), ["test"],
     "une exclusion qui ne touche aucun des trois systèmes est refusée : la garde déborde.");
 
-  const pas = (ligne: string) => complet.replace("      - run: npm test", `      - ${ligne}\n        run: npm test`);
+  const pas = (ligne: string) => complet.replace(SUITE, `      - ${ligne}\n        timeout-minutes: 60\n        run: npm test`);
   assert.deepEqual(jobsSurTroisSystemes(pas("if: false")), [], "un pas `npm test` à `if: false` est accepté.");
   assert.deepEqual(jobsSurTroisSystemes(pas("if: ${{ false }}")), [], "un pas `npm test` à `if: ${{ false }}` est accepté.");
   assert.deepEqual(jobsSurTroisSystemes(pas("if: matrix.os != 'windows-latest'")), [],
@@ -266,9 +272,23 @@ test("témoin : la lecture des chaînes voit un job complet, et refuse les faute
     "`continue-on-error: false` est refusé : la garde déborde.");
   assert.deepEqual(jobsSurTroisSystemes(complet.replace("    runs-on: ${{ matrix.os }}", "    runs-on: ${{ matrix.os }}\n    continue-on-error: true")), [],
     "un job entier qui tolère l'échec est accepté.");
-  const deuxPas = complet.replace("      - run: npm test", "      - if: false\n        run: npm test\n      - run: npm test");
+  const deuxPas = complet.replace(SUITE, `      - if: false\n        timeout-minutes: 60\n        run: npm test\n${SUITE}`);
   assert.deepEqual(jobsSurTroisSystemes(deuxPas), ["test"],
     "un pas mort ne doit pas annuler un autre pas `npm test` qui tourne vraiment.");
+
+  /* Sans délai, une suite qui se fige tient le job jusqu'à ce que quelqu'un l'annule : le
+     premier tour Windows de Routing (2026-09-29) est resté muet ainsi. Le délai doit être sur
+     le pas `npm test` lui-même, et être un nombre de minutes. */
+  assert.deepEqual(jobsSurTroisSystemes(complet.replace(SUITE, "      - run: npm test")), [],
+    "un pas `npm test` sans `timeout-minutes` est accepté.");
+  assert.deepEqual(jobsSurTroisSystemes(complet
+    .replace("      - run: npm ci --ignore-scripts", "      - timeout-minutes: 60\n        run: npm ci --ignore-scripts")
+    .replace(SUITE, "      - run: npm test")), [],
+    "un délai posé sur un autre pas que `npm test` est accepté.");
+  assert.deepEqual(jobsSurTroisSystemes(complet.replace("timeout-minutes: 60", "timeout-minutes: 0")), [],
+    "un délai nul est accepté.");
+  assert.deepEqual(jobsSurTroisSystemes(complet.replace("timeout-minutes: 60", "timeout-minutes: ${{ matrix.delai }}")), [],
+    "un délai qui n'est pas un nombre de minutes écrit est accepté.");
 
   /* Un checkout Windows réécrit les fins de ligne en CRLF : le même workflow doit être lu de
      la même façon, sinon le témoin rougirait sur la machine même qu'il garde. */
