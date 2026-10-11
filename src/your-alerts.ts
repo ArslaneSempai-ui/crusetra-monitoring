@@ -21,9 +21,12 @@
  * ─── JAMAIS UNE VALEUR ───
  *
  * Les sorties (`<alerts>-measured.md`, `<alerts>-measured.json` scellé) portent des
- * comptes, des taux, des intervalles et un verdict par `alert_id` : JAMAIS un
- * `account_id`, un montant, une date de transaction ou un pays. Un test plante des
- * sentinelles dans chaque colonne et prouve d'abord que son détecteur sait les voir.
+ * comptes, des taux, des intervalles et un verdict par `alert_id` (la disposition de
+ * l'analyste et « sans historique », jamais un score) : JAMAIS un `account_id`, un
+ * montant, une date de transaction ou un pays. Un test plante des sentinelles dans chaque
+ * colonne et prouve d'abord que son détecteur sait les voir ; un second plante des
+ * montants, lit le relevé scellé et refuse tout nombre qui s'inverse en l'un d'eux
+ * (record-sans-score.test.ts). Les `alert_id` et les noms des deux fichiers, eux, SORTENT.
  */
 import { readFileSync, writeFileSync } from "node:fs";
 import { basename } from "node:path";
@@ -284,7 +287,10 @@ export type MesureAlertes = {
   echelles: Echelles;
   paliers: Partial<Record<PalierId, MesurePalier>>;
   absents: PalierId[];
-  verdicts: Record<string, { disposition: Disposition; sansHistorique: boolean; scores: Partial<Record<PalierId, number>> }>;
+  /** By alert_id: the analyst's disposition and whether the case had no history, never a
+   *  score. A score is a squashed amount (1 - exp(-peak / scale), the scale printed in
+   *  `echelles`), so a raw score per alert gives each alert's largest amount back. */
+  verdicts: Record<string, { disposition: Disposition; sansHistorique: boolean }>;
   code: { commit: string } | null;
   empreinte?: string;
 };
@@ -337,15 +343,15 @@ export function mesurer(
   const verdicts: MesureAlertes["verdicts"] = Object.fromEntries(alertes.map((a) => [a.id, {
     disposition: a.disposition,
     sansHistorique: cas.get(a.id)!.historique.length === 0,
-    scores: {} as Partial<Record<PalierId, number>>,
   }]));
 
   for (const s of [...registre.values()].sort((x, y) => x.rang - y.rang)) {
     /* Le score d'un cas se calcule UNE fois et voyage BRUT : un arrondi avant la
-       comparaison ferait tirer au seuil 1,00 un score de 0,99996 (payé chez le rouge). */
+       comparaison ferait tirer au seuil 1,00 un score de 0,99996 (payé chez le rouge).
+       The scores stay here and feed the cells only: a score is a squashed amount, so
+       none is written per alert in the record (record-sans-score.test.ts). */
     const scores = new Map<string, number>(
       alertes.map((a) => [a.id, s.score(cas.get(a.id)!, echelles)]));
-    for (const a of alertes) verdicts[a.id]!.scores[s.id] = scores.get(a.id)!;
     const cellules: Cellule[] = SEUILS.map((seuil) => {
       const tire = (a: Alerte) => scores.get(a.id)! >= seuil;
       const tirees = alertes.filter(tire).length;
@@ -458,7 +464,7 @@ is not shown: never estimated in silence.
 
 It writes, next to your alerts file and nowhere else:
   <file>-measured.md     the report (no account, no amount, no date of yours)
-  <file>-measured.json   the sealed record: counts, rates, verdicts by alert_id
+  <file>-measured.json   the sealed record: counts, rates, and by alert_id your disposition (never a score)
 
 Then: npm run optimise -- --from=<file>-measured.json --recall=0.90
 Nothing about your files leaves this machine.
