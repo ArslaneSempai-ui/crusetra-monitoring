@@ -36,7 +36,15 @@ It is the third tool of the Crusetra suite, after [Crusetra Routing](https://git
 
 ## Requirements
 
-Node 24 or newer, on **macOS or Linux**. Windows has not been tested and is not claimed.
+The floor is Node 24 (`engines` in `package.json`). The suite ran green on **Linux, macOS and
+Windows**, each on Node 24 and Node 26, in the workflow `.github/workflows/tests.yml`: see the
+[run on main](https://github.com/ArslaneSempai-ui/crusetra-monitoring/actions/runs/38153252207),
+whose Windows jobs are
+[Node 24](https://github.com/ArslaneSempai-ui/crusetra-monitoring/actions/runs/38153252207/job/114510881091)
+and
+[Node 26](https://github.com/ArslaneSempai-ui/crusetra-monitoring/actions/runs/38153252207/job/114510881204).
+Only those three systems and those two Node versions were run, and `src/readme-platforms.test.ts`
+keeps the systems and Node versions named here equal to that workflow's matrix.
 
 ## What leaves your machine
 
@@ -60,7 +68,7 @@ reports are verified against the same public key, [`cle-publique.pem`](cle-publi
 with `npm run verify`.
 
 <!-- figures:tests -->
-**131 tests** across 20 files, counted by running the suite rather than typed here.
+**133 tests** across 21 files, counted by running the suite rather than typed here.
 <!-- /figures:tests -->
 
 ## Licence
