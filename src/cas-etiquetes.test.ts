@@ -2,13 +2,16 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import {
   chargerCasEtiquetes, variantes, jeuSynthetique, tirage,
-  NATURES_SUSPECTES, NATURES_BENIGNES, SEUIL_DECLARATION, type CasEtiquete,
+  NATURES_SUSPECTES, NATURES_BENIGNES, SEUIL_DECLARATION, CAS_PRIVES, type CasEtiquete,
 } from "./synthetic.ts";
+import { jeuPresent, raisonAbsent } from "./jeux.ts";
 import { exigerCas, JOURS_FENETRE } from "./cas.ts";
 
-const cas = chargerCasEtiquetes();
+/** The full set is private: without it these cases skip with a named reason. */
+const SKIP = jeuPresent(CAS_PRIVES) ? false : raisonAbsent(CAS_PRIVES);
+const cas = SKIP ? [] : chargerCasEtiquetes();
 
-test("au moins 40 suspects et 40 bénins, chaque nature du contrat présente, identifiants uniques", () => {
+test("au moins 40 suspects et 40 bénins, chaque nature du contrat présente, identifiants uniques", { skip: SKIP }, () => {
   const suspects = cas.filter((c) => (NATURES_SUSPECTES as readonly string[]).includes(c.nature));
   const benins = cas.filter((c) => (NATURES_BENIGNES as readonly string[]).includes(c.nature));
   assert.ok(suspects.length >= 40, `${suspects.length} suspect(s) : le contrat en demande 40`);
@@ -21,7 +24,7 @@ test("au moins 40 suspects et 40 bénins, chaque nature du contrat présente, id
   assert.equal(new Set(cas.map((c) => c.id)).size, cas.length, "identifiants en double");
 });
 
-test("chaque cas écrit passe exigerCas, porte une raison d'une phrase, et sa fenêtre tient dans les trente jours", () => {
+test("chaque cas écrit passe exigerCas, porte une raison d'une phrase, et sa fenêtre tient dans les trente jours", { skip: SKIP }, () => {
   for (const c of cas) {
     exigerCas(c);
     assert.ok(c.raison.trim().length > 20, `raison trop courte pour ${c.id}`);
@@ -38,7 +41,7 @@ test("chaque cas écrit passe exigerCas, porte une raison d'une phrase, et sa fe
   }
 });
 
-test("les sosies sont structurellement des sosies : l'historique porte la différence", () => {
+test("les sosies sont structurellement des sosies : l'historique porte la différence", { skip: SKIP }, () => {
   /* Le jeu vaut par ses sosies (contrat §4) : ce qui sépare le bénin de son jumeau suspect
      doit être DANS les données, pas dans l'étiquette. Trois paires épinglées. */
   for (const c of cas) {
@@ -66,7 +69,7 @@ test("les sosies sont structurellement des sosies : l'historique porte la diffé
   }
 });
 
-test("le générateur et les variantes sont déterministes : même graine, mêmes cas ; autre graine, autres cas", () => {
+test("le générateur et les variantes sont déterministes : même graine, mêmes cas ; autre graine, autres cas", { skip: SKIP }, () => {
   const a = tirage(9), b = tirage(9), c = tirage(10);
   assert.deepEqual([a(), a()], [b(), b()]);
   assert.notDeepEqual([tirage(9)(), 0], [c(), 0]);
@@ -75,7 +78,7 @@ test("le générateur et les variantes sont déterministes : même graine, même
   assert.notDeepEqual(variantes(ecrit, 20260906, 3), variantes(ecrit, 20260907, 3));
 });
 
-test("chaque variante passe exigerCas, garde sa nature, et se déclare synthétique", () => {
+test("chaque variante passe exigerCas, garde sa nature, et se déclare synthétique", { skip: SKIP }, () => {
   for (const nature of [...NATURES_SUSPECTES, ...NATURES_BENIGNES]) {
     const ecrit = cas.find((c) => c.nature === nature)!;
     for (const v of variantes(ecrit, 7, 3)) {
@@ -87,7 +90,7 @@ test("chaque variante passe exigerCas, garde sa nature, et se déclare synthéti
   }
 });
 
-test("le gigage préserve la nature : seuil de structuration, égalités d'aller-retour, échéance au centime", () => {
+test("le gigage préserve la nature : seuil de structuration, égalités d'aller-retour, échéance au centime", { skip: SKIP }, () => {
   const str = cas.find((c) => c.nature === "structuring")!;
   for (const v of variantes(str, 123, 8)) {
     for (const t of v.fenetre) {
@@ -126,7 +129,7 @@ test("le gigage préserve la nature : seuil de structuration, égalités d'aller
   }
 });
 
-test("le jeu synthétique couvre toutes les natures et reste stable sous retrait d'un cas", () => {
+test("le jeu synthétique couvre toutes les natures et reste stable sous retrait d'un cas", { skip: SKIP }, () => {
   const jeu = jeuSynthetique(cas, 20260906, 2);
   assert.equal(jeu.length, cas.length * 2);
   const natures = new Set(jeu.map((c) => c.nature));

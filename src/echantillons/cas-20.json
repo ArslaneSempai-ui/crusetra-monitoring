@@ -1,0 +1,3645 @@
+{
+ "_": "A 20-case sample of the authored half of the Monitoring record: cases written family by family, each with its declared nature and one-sentence reason. No real transaction and no real person. This is the only labelled data of the set left public; the full set (84 rows) is private. Rule, fixed and not hand-picked: rank rows by SHA-256 of the string `crusetra-monitoring-jeux-2026-10-19:<id>`. Step 1 keeps the lowest-ranked row of each of the 12 nature values (cash-intensive, dormant-burst, layering-fan-out, loan-repayment, one-off-purchase, payroll, rapid-movement, rent-collection, round-tripping, savings-transfer, seasonal-trade, structuring). Step 2 adds the lowest-ranked remaining rows until there are 20. Rows are then sorted by id.",
+ "provenance": "authored, sample",
+ "seed": "crusetra-monitoring-jeux-2026-10-19",
+ "drawnFrom": 84,
+ "cas": [
+  {
+   "id": "l-cai-06",
+   "finFenetre": "2026-07-31",
+   "fenetre": [
+    {
+     "ts": "2026-07-04T10:45:00Z",
+     "amount": 822.9,
+     "direction": "in",
+     "channel": "cash"
+    },
+    {
+     "ts": "2026-07-05T11:45:00Z",
+     "amount": 1745.97,
+     "direction": "in",
+     "channel": "cash"
+    },
+    {
+     "ts": "2026-07-07T12:45:00Z",
+     "amount": 1093.53,
+     "direction": "in",
+     "channel": "cash"
+    },
+    {
+     "ts": "2026-07-09T13:45:00Z",
+     "amount": 2420.07,
+     "direction": "in",
+     "channel": "cash"
+    },
+    {
+     "ts": "2026-07-10T14:45:00Z",
+     "amount": 672.96,
+     "direction": "in",
+     "channel": "cash"
+    },
+    {
+     "ts": "2026-07-12T15:45:00Z",
+     "amount": 616.88,
+     "direction": "in",
+     "channel": "cash"
+    },
+    {
+     "ts": "2026-07-14T10:45:00Z",
+     "amount": 1227.65,
+     "direction": "in",
+     "channel": "cash"
+    },
+    {
+     "ts": "2026-07-15T11:45:00Z",
+     "amount": 3489.66,
+     "direction": "in",
+     "channel": "cash"
+    },
+    {
+     "ts": "2026-07-17T12:45:00Z",
+     "amount": 2836.83,
+     "direction": "in",
+     "channel": "cash"
+    },
+    {
+     "ts": "2026-07-19T13:45:00Z",
+     "amount": 3194.72,
+     "direction": "in",
+     "channel": "cash"
+    },
+    {
+     "ts": "2026-07-20T14:45:00Z",
+     "amount": 3125.99,
+     "direction": "in",
+     "channel": "cash"
+    },
+    {
+     "ts": "2026-07-22T15:45:00Z",
+     "amount": 1416.82,
+     "direction": "in",
+     "channel": "cash"
+    },
+    {
+     "ts": "2026-07-25T11:00:00Z",
+     "amount": 12465.19,
+     "direction": "out",
+     "channel": "wire",
+     "country": "MT"
+    },
+    {
+     "ts": "2026-07-29T11:30:00Z",
+     "amount": 8612.31,
+     "direction": "out",
+     "channel": "wire",
+     "country": "AE"
+    }
+   ],
+   "historique": [
+    {
+     "ts": "2026-01-14T15:30:00Z",
+     "amount": 36.56,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-01-19T14:30:00Z",
+     "amount": 78.43,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-01-24T13:30:00Z",
+     "amount": 83.95,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-01-29T12:30:00Z",
+     "amount": 73.65,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-01-30T08:00:00Z",
+     "amount": 785.67,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-02-03T09:12:00Z",
+     "amount": 2880.81,
+     "direction": "in",
+     "channel": "wire",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-02-13T15:30:00Z",
+     "amount": 40.67,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-02-18T14:30:00Z",
+     "amount": 70.31,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-02-23T13:30:00Z",
+     "amount": 85.79,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-02-28T12:30:00Z",
+     "amount": 35.85,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-03-01T08:00:00Z",
+     "amount": 788.67,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-03-05T09:12:00Z",
+     "amount": 3116.59,
+     "direction": "in",
+     "channel": "wire",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-03-15T15:30:00Z",
+     "amount": 70.63,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-03-20T14:30:00Z",
+     "amount": 67.05,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-03-25T13:30:00Z",
+     "amount": 57.01,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-03-30T12:30:00Z",
+     "amount": 65.1,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-03-31T08:00:00Z",
+     "amount": 833.7,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-04-04T09:12:00Z",
+     "amount": 2953.87,
+     "direction": "in",
+     "channel": "wire",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-04-14T15:30:00Z",
+     "amount": 114.48,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-04-19T14:30:00Z",
+     "amount": 86.3,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-04-24T13:30:00Z",
+     "amount": 79.87,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-04-29T12:30:00Z",
+     "amount": 69.98,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-04-30T08:00:00Z",
+     "amount": 803.31,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-05-02T09:12:00Z",
+     "amount": 2758.25,
+     "direction": "in",
+     "channel": "wire",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-05-14T15:30:00Z",
+     "amount": 35.59,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-05-19T14:30:00Z",
+     "amount": 62.04,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-05-24T13:30:00Z",
+     "amount": 103.41,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-05-29T12:30:00Z",
+     "amount": 50.29,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-05-30T08:00:00Z",
+     "amount": 837.85,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-06-02T09:12:00Z",
+     "amount": 2904.39,
+     "direction": "in",
+     "channel": "wire",
+     "country": "FR"
+    }
+   ],
+   "nature": "cash-intensive",
+   "raison": "12 cash deposits in a month on an account whose history is card and wire, consolidated and sent abroad in two payments."
+  },
+  {
+   "id": "l-dor-02",
+   "finFenetre": "2026-03-31",
+   "fenetre": [
+    {
+     "ts": "2026-03-11T10:20:00Z",
+     "amount": 8844.06,
+     "direction": "in",
+     "channel": "transfer"
+    },
+    {
+     "ts": "2026-03-13T11:20:00Z",
+     "amount": 19136.52,
+     "direction": "out",
+     "channel": "wire",
+     "country": "HK"
+    },
+    {
+     "ts": "2026-03-15T12:20:00Z",
+     "amount": 20424.19,
+     "direction": "in",
+     "channel": "wire"
+    },
+    {
+     "ts": "2026-03-17T10:20:00Z",
+     "amount": 18091.39,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "HK"
+    },
+    {
+     "ts": "2026-03-19T11:20:00Z",
+     "amount": 8361.57,
+     "direction": "in",
+     "channel": "wire"
+    },
+    {
+     "ts": "2026-03-21T12:20:00Z",
+     "amount": 20960.85,
+     "direction": "out",
+     "channel": "wire",
+     "country": "HK"
+    }
+   ],
+   "historique": [
+    {
+     "ts": "2025-10-25T15:00:00Z",
+     "amount": 27.21,
+     "direction": "out",
+     "channel": "card"
+    }
+   ],
+   "nature": "dormant-burst",
+   "raison": "An account almost silent for six months wakes into 6 large two-way movements with no history that explains them."
+  },
+  {
+   "id": "l-dor-04",
+   "finFenetre": "2026-05-29",
+   "fenetre": [
+    {
+     "ts": "2026-05-09T10:20:00Z",
+     "amount": 8858.01,
+     "direction": "in",
+     "channel": "transfer"
+    },
+    {
+     "ts": "2026-05-11T11:20:00Z",
+     "amount": 4401.86,
+     "direction": "out",
+     "channel": "wire",
+     "country": "PA"
+    },
+    {
+     "ts": "2026-05-13T12:20:00Z",
+     "amount": 9073.69,
+     "direction": "in",
+     "channel": "wire"
+    },
+    {
+     "ts": "2026-05-15T10:20:00Z",
+     "amount": 19423.98,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "PA"
+    },
+    {
+     "ts": "2026-05-17T11:20:00Z",
+     "amount": 14354.35,
+     "direction": "in",
+     "channel": "wire"
+    },
+    {
+     "ts": "2026-05-19T12:20:00Z",
+     "amount": 11878.44,
+     "direction": "out",
+     "channel": "wire",
+     "country": "PA"
+    },
+    {
+     "ts": "2026-05-21T10:20:00Z",
+     "amount": 7771.45,
+     "direction": "in",
+     "channel": "transfer"
+    },
+    {
+     "ts": "2026-05-23T11:20:00Z",
+     "amount": 16216.42,
+     "direction": "out",
+     "channel": "wire",
+     "country": "PA"
+    }
+   ],
+   "historique": [],
+   "nature": "dormant-burst",
+   "raison": "An account almost silent for six months wakes into 8 large two-way movements with no history that explains them."
+  },
+  {
+   "id": "l-dor-05",
+   "finFenetre": "2026-06-19",
+   "fenetre": [
+    {
+     "ts": "2026-05-30T10:20:00Z",
+     "amount": 8864.99,
+     "direction": "in",
+     "channel": "transfer"
+    },
+    {
+     "ts": "2026-06-01T11:20:00Z",
+     "amount": 6034.52,
+     "direction": "out",
+     "channel": "wire",
+     "country": "KY"
+    },
+    {
+     "ts": "2026-06-03T12:20:00Z",
+     "amount": 21398.44,
+     "direction": "in",
+     "channel": "wire"
+    },
+    {
+     "ts": "2026-06-05T10:20:00Z",
+     "amount": 20090.28,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "KY"
+    },
+    {
+     "ts": "2026-06-07T11:20:00Z",
+     "amount": 8350.74,
+     "direction": "in",
+     "channel": "wire"
+    }
+   ],
+   "historique": [
+    {
+     "ts": "2026-01-22T15:00:00Z",
+     "amount": 24.78,
+     "direction": "out",
+     "channel": "card"
+    }
+   ],
+   "nature": "dormant-burst",
+   "raison": "An account almost silent for six months wakes into 5 large two-way movements with no history that explains them."
+  },
+  {
+   "id": "l-dor-06",
+   "finFenetre": "2026-07-31",
+   "fenetre": [
+    {
+     "ts": "2026-07-11T10:20:00Z",
+     "amount": 8871.96,
+     "direction": "in",
+     "channel": "transfer"
+    },
+    {
+     "ts": "2026-07-13T11:20:00Z",
+     "amount": 7667.19,
+     "direction": "out",
+     "channel": "wire",
+     "country": "MT"
+    },
+    {
+     "ts": "2026-07-15T12:20:00Z",
+     "amount": 15723.19,
+     "direction": "in",
+     "channel": "wire"
+    },
+    {
+     "ts": "2026-07-17T10:20:00Z",
+     "amount": 20756.57,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "MT"
+    },
+    {
+     "ts": "2026-07-19T11:20:00Z",
+     "amount": 20347.14,
+     "direction": "in",
+     "channel": "wire"
+    },
+    {
+     "ts": "2026-07-21T12:20:00Z",
+     "amount": 20796.03,
+     "direction": "out",
+     "channel": "wire",
+     "country": "MT"
+    }
+   ],
+   "historique": [
+    {
+     "ts": "2026-03-08T15:00:00Z",
+     "amount": 23.07,
+     "direction": "out",
+     "channel": "card"
+    }
+   ],
+   "nature": "dormant-burst",
+   "raison": "An account almost silent for six months wakes into 6 large two-way movements with no history that explains them."
+  },
+  {
+   "id": "l-dor-07",
+   "finFenetre": "2026-08-21",
+   "fenetre": [
+    {
+     "ts": "2026-08-01T10:20:00Z",
+     "amount": 8878.94,
+     "direction": "in",
+     "channel": "transfer"
+    },
+    {
+     "ts": "2026-08-03T11:20:00Z",
+     "amount": 9299.86,
+     "direction": "out",
+     "channel": "wire",
+     "country": "CY"
+    },
+    {
+     "ts": "2026-08-05T12:20:00Z",
+     "amount": 10047.94,
+     "direction": "in",
+     "channel": "wire"
+    },
+    {
+     "ts": "2026-08-07T10:20:00Z",
+     "amount": 21422.87,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "CY"
+    },
+    {
+     "ts": "2026-08-09T11:20:00Z",
+     "amount": 14343.53,
+     "direction": "in",
+     "channel": "wire"
+    },
+    {
+     "ts": "2026-08-11T12:20:00Z",
+     "amount": 16254.83,
+     "direction": "out",
+     "channel": "wire",
+     "country": "CY"
+    },
+    {
+     "ts": "2026-08-13T10:20:00Z",
+     "amount": 13047.45,
+     "direction": "in",
+     "channel": "transfer"
+    }
+   ],
+   "historique": [],
+   "nature": "dormant-burst",
+   "raison": "An account almost silent for six months wakes into 7 large two-way movements with no history that explains them."
+  },
+  {
+   "id": "l-fan-03",
+   "finFenetre": "2026-04-24",
+   "fenetre": [
+    {
+     "ts": "2026-04-15T09:00:00Z",
+     "amount": 88039.17,
+     "direction": "in",
+     "channel": "wire",
+     "country": "ES"
+    },
+    {
+     "ts": "2026-04-16T08:00:00Z",
+     "amount": 9111.96,
+     "direction": "out",
+     "channel": "transfer"
+    },
+    {
+     "ts": "2026-04-16T09:05:00Z",
+     "amount": 7436.7,
+     "direction": "out",
+     "channel": "transfer"
+    },
+    {
+     "ts": "2026-04-16T10:10:00Z",
+     "amount": 8931.36,
+     "direction": "out",
+     "channel": "transfer"
+    },
+    {
+     "ts": "2026-04-16T11:15:00Z",
+     "amount": 6886.79,
+     "direction": "out",
+     "channel": "transfer"
+    },
+    {
+     "ts": "2026-04-16T12:20:00Z",
+     "amount": 4995.75,
+     "direction": "out",
+     "channel": "transfer"
+    },
+    {
+     "ts": "2026-04-16T13:25:00Z",
+     "amount": 4844.08,
+     "direction": "out",
+     "channel": "transfer"
+    },
+    {
+     "ts": "2026-04-17T08:50:00Z",
+     "amount": 8324.8,
+     "direction": "out",
+     "channel": "transfer"
+    },
+    {
+     "ts": "2026-04-17T14:30:00Z",
+     "amount": 8213.26,
+     "direction": "out",
+     "channel": "transfer"
+    },
+    {
+     "ts": "2026-04-17T15:35:00Z",
+     "amount": 5590.39,
+     "direction": "out",
+     "channel": "transfer"
+    },
+    {
+     "ts": "2026-04-17T16:40:00Z",
+     "amount": 7206.55,
+     "direction": "out",
+     "channel": "transfer"
+    },
+    {
+     "ts": "2026-04-17T17:45:00Z",
+     "amount": 12095.58,
+     "direction": "out",
+     "channel": "transfer"
+    }
+   ],
+   "historique": [
+    {
+     "ts": "2025-11-07T15:30:00Z",
+     "amount": 43.97,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-11-12T14:30:00Z",
+     "amount": 41.89,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-11-17T13:30:00Z",
+     "amount": 107.66,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-11-22T12:30:00Z",
+     "amount": 109.02,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-11-23T08:00:00Z",
+     "amount": 835.85,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2025-11-26T09:12:00Z",
+     "amount": 2983.27,
+     "direction": "in",
+     "channel": "wire",
+     "country": "FR"
+    },
+    {
+     "ts": "2025-12-07T15:30:00Z",
+     "amount": 94.5,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-12-12T14:30:00Z",
+     "amount": 61.34,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-12-17T13:30:00Z",
+     "amount": 92.12,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-12-22T12:30:00Z",
+     "amount": 111.95,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-12-23T08:00:00Z",
+     "amount": 815.84,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2025-12-25T09:12:00Z",
+     "amount": 2968.99,
+     "direction": "in",
+     "channel": "wire",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-01-06T15:30:00Z",
+     "amount": 26.39,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-01-11T14:30:00Z",
+     "amount": 50.96,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-01-16T13:30:00Z",
+     "amount": 107.7,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-01-21T12:30:00Z",
+     "amount": 30.31,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-01-22T08:00:00Z",
+     "amount": 812.79,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-01-26T09:12:00Z",
+     "amount": 2826.32,
+     "direction": "in",
+     "channel": "wire",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-02-05T15:30:00Z",
+     "amount": 92.43,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-02-10T14:30:00Z",
+     "amount": 105.96,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-02-15T13:30:00Z",
+     "amount": 68.02,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-02-20T12:30:00Z",
+     "amount": 80.75,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-02-21T08:00:00Z",
+     "amount": 831.37,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-02-25T09:12:00Z",
+     "amount": 2873.48,
+     "direction": "in",
+     "channel": "wire",
+     "country": "FR"
+    }
+   ],
+   "nature": "layering-fan-out",
+   "raison": "One large credit fans out into 11 uneven transfers inside two days, leaving the account close to empty."
+  },
+  {
+   "id": "l-loa-06",
+   "finFenetre": "2026-07-31",
+   "fenetre": [
+    {
+     "ts": "2026-07-06T13:00:00Z",
+     "amount": 42.35,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-07-09T14:00:00Z",
+     "amount": 42.73,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-07-12T15:00:00Z",
+     "amount": 56.93,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-07-15T16:00:00Z",
+     "amount": 25.75,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-07-16T08:00:00Z",
+     "amount": 1069.16,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-07-18T17:00:00Z",
+     "amount": 35.98,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-07-19T09:12:00Z",
+     "amount": 2715.79,
+     "direction": "in",
+     "channel": "wire",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-07-21T13:00:00Z",
+     "amount": 42.08,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-07-24T14:00:00Z",
+     "amount": 72.32,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-07-27T15:00:00Z",
+     "amount": 41.75,
+     "direction": "out",
+     "channel": "card"
+    }
+   ],
+   "historique": [
+    {
+     "ts": "2026-02-16T08:00:00Z",
+     "amount": 1069.16,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-02-19T09:12:00Z",
+     "amount": 3120.3,
+     "direction": "in",
+     "channel": "wire",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-03-18T08:00:00Z",
+     "amount": 1069.16,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-03-21T09:12:00Z",
+     "amount": 2906.67,
+     "direction": "in",
+     "channel": "wire",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-04-17T08:00:00Z",
+     "amount": 1069.16,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-04-20T09:12:00Z",
+     "amount": 2742.95,
+     "direction": "in",
+     "channel": "wire",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-05-17T08:00:00Z",
+     "amount": 1069.16,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-05-20T09:12:00Z",
+     "amount": 2955.17,
+     "direction": "in",
+     "channel": "wire",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-06-16T08:00:00Z",
+     "amount": 1069.16,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-06-19T09:12:00Z",
+     "amount": 3127.72,
+     "direction": "in",
+     "channel": "wire",
+     "country": "FR"
+    }
+   ],
+   "nature": "loan-repayment",
+   "raison": "The same instalment goes to the same lender every month, to the cent: regular, one way, and as old as the record."
+  },
+  {
+   "id": "l-one-05",
+   "finFenetre": "2026-06-19",
+   "fenetre": [
+    {
+     "ts": "2026-05-24T12:30:00Z",
+     "amount": 95.68,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-05-28T12:30:00Z",
+     "amount": 93.13,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-06-01T12:30:00Z",
+     "amount": 99.82,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-06-05T12:30:00Z",
+     "amount": 85.26,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-06-09T12:30:00Z",
+     "amount": 63.49,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-06-12T10:00:00Z",
+     "amount": 27053.45,
+     "direction": "out",
+     "channel": "wire",
+     "country": "BE"
+    },
+    {
+     "ts": "2026-06-13T12:30:00Z",
+     "amount": 94.61,
+     "direction": "out",
+     "channel": "card"
+    }
+   ],
+   "historique": [
+    {
+     "ts": "2025-11-03T15:30:00Z",
+     "amount": 89.18,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-11-08T14:30:00Z",
+     "amount": 115.67,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-11-13T13:30:00Z",
+     "amount": 45.82,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-11-18T12:30:00Z",
+     "amount": 97.57,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-11-19T08:00:00Z",
+     "amount": 894.9,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2025-11-21T09:12:00Z",
+     "amount": 3323.85,
+     "direction": "in",
+     "channel": "wire",
+     "country": "FR"
+    },
+    {
+     "ts": "2025-12-03T15:30:00Z",
+     "amount": 80.58,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-12-08T14:30:00Z",
+     "amount": 87.39,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-12-13T10:00:00Z",
+     "amount": 4048.71,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2025-12-13T13:30:00Z",
+     "amount": 52,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-12-18T12:30:00Z",
+     "amount": 109.55,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-12-19T08:00:00Z",
+     "amount": 897.51,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2025-12-21T09:12:00Z",
+     "amount": 3048.01,
+     "direction": "in",
+     "channel": "wire",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-01-02T15:30:00Z",
+     "amount": 122.22,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-01-07T14:30:00Z",
+     "amount": 40.42,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-01-12T10:00:00Z",
+     "amount": 3873.48,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-01-12T13:30:00Z",
+     "amount": 92.73,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-01-17T12:30:00Z",
+     "amount": 33.66,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-01-18T08:00:00Z",
+     "amount": 863.5,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-01-20T09:12:00Z",
+     "amount": 3110.35,
+     "direction": "in",
+     "channel": "wire",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-02-01T15:30:00Z",
+     "amount": 46.25,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-02-06T14:30:00Z",
+     "amount": 125.17,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-02-11T10:00:00Z",
+     "amount": 4056,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-02-11T13:30:00Z",
+     "amount": 42.35,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-02-16T12:30:00Z",
+     "amount": 63.79,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-02-17T08:00:00Z",
+     "amount": 886.25,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-02-20T09:12:00Z",
+     "amount": 3413.3,
+     "direction": "in",
+     "channel": "wire",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-03-03T15:30:00Z",
+     "amount": 31.94,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-03-08T14:30:00Z",
+     "amount": 38.02,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-03-13T10:00:00Z",
+     "amount": 3903.77,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-03-13T13:30:00Z",
+     "amount": 101.36,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-03-18T12:30:00Z",
+     "amount": 66.78,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-03-19T08:00:00Z",
+     "amount": 909.44,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-03-23T09:12:00Z",
+     "amount": 3162.1,
+     "direction": "in",
+     "channel": "wire",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-04-02T15:30:00Z",
+     "amount": 60.93,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-04-07T14:30:00Z",
+     "amount": 36.61,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-04-12T10:00:00Z",
+     "amount": 3872.05,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-04-12T13:30:00Z",
+     "amount": 53.6,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-04-17T12:30:00Z",
+     "amount": 35,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-04-18T08:00:00Z",
+     "amount": 878.32,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-04-21T09:12:00Z",
+     "amount": 3475.97,
+     "direction": "in",
+     "channel": "wire",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-05-12T10:00:00Z",
+     "amount": 3969.22,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    }
+   ],
+   "nature": "one-off-purchase",
+   "raison": "One large payment after months of visible saving toward it: the history explains the peak the window shows."
+  },
+  {
+   "id": "l-pay-01",
+   "finFenetre": "2026-02-27",
+   "fenetre": [
+    {
+     "ts": "2026-01-31T12:30:00Z",
+     "amount": 78.79,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-02-01T13:30:00Z",
+     "amount": 91.34,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-02-03T14:30:00Z",
+     "amount": 93.33,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-02-05T15:30:00Z",
+     "amount": 31.98,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-02-06T16:30:00Z",
+     "amount": 63.52,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-02-08T17:30:00Z",
+     "amount": 32.99,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-02-10T18:30:00Z",
+     "amount": 43.83,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-02-12T19:30:00Z",
+     "amount": 85.07,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-02-13T12:30:00Z",
+     "amount": 43.79,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-02-15T13:30:00Z",
+     "amount": 86.17,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-02-17T14:30:00Z",
+     "amount": 96.42,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-02-18T15:30:00Z",
+     "amount": 66.79,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-02-20T16:30:00Z",
+     "amount": 38.69,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-02-22T17:30:00Z",
+     "amount": 72.17,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-02-24T09:04:00Z",
+     "amount": 2725.4,
+     "direction": "in",
+     "channel": "wire",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-02-25T08:00:00Z",
+     "amount": 844.87,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "FR"
+    }
+   ],
+   "historique": [
+    {
+     "ts": "2025-07-14T15:30:00Z",
+     "amount": 95.02,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-07-19T14:30:00Z",
+     "amount": 103.84,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-07-24T13:30:00Z",
+     "amount": 92.23,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-07-29T12:30:00Z",
+     "amount": 73.99,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-07-30T08:00:00Z",
+     "amount": 776.41,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2025-08-01T09:12:00Z",
+     "amount": 2468.99,
+     "direction": "in",
+     "channel": "wire",
+     "country": "FR"
+    },
+    {
+     "ts": "2025-08-13T15:30:00Z",
+     "amount": 86.01,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-08-18T14:30:00Z",
+     "amount": 91.27,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-08-23T13:30:00Z",
+     "amount": 49.61,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-08-28T12:30:00Z",
+     "amount": 67.66,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-08-29T08:00:00Z",
+     "amount": 768.43,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2025-08-31T09:12:00Z",
+     "amount": 2462.14,
+     "direction": "in",
+     "channel": "wire",
+     "country": "FR"
+    },
+    {
+     "ts": "2025-09-12T15:30:00Z",
+     "amount": 69.6,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-09-17T14:30:00Z",
+     "amount": 35.2,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-09-22T13:30:00Z",
+     "amount": 60.41,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-09-27T12:30:00Z",
+     "amount": 97.57,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-09-28T08:00:00Z",
+     "amount": 772.13,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2025-10-02T09:12:00Z",
+     "amount": 2765.06,
+     "direction": "in",
+     "channel": "wire",
+     "country": "FR"
+    },
+    {
+     "ts": "2025-10-12T15:30:00Z",
+     "amount": 81.83,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-10-17T14:30:00Z",
+     "amount": 101.56,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-10-22T13:30:00Z",
+     "amount": 44.13,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-10-27T12:30:00Z",
+     "amount": 56.99,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-10-28T08:00:00Z",
+     "amount": 753.89,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2025-11-01T09:12:00Z",
+     "amount": 2976.01,
+     "direction": "in",
+     "channel": "wire",
+     "country": "FR"
+    },
+    {
+     "ts": "2025-11-11T15:30:00Z",
+     "amount": 33.49,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-11-16T14:30:00Z",
+     "amount": 37.46,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-11-21T13:30:00Z",
+     "amount": 71.16,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-11-26T12:30:00Z",
+     "amount": 98.39,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-11-27T08:00:00Z",
+     "amount": 755.61,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2025-11-29T09:12:00Z",
+     "amount": 2844.13,
+     "direction": "in",
+     "channel": "wire",
+     "country": "FR"
+    },
+    {
+     "ts": "2025-12-11T15:30:00Z",
+     "amount": 32.17,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-12-16T14:30:00Z",
+     "amount": 29.81,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-12-21T13:30:00Z",
+     "amount": 24.23,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-12-26T12:30:00Z",
+     "amount": 69.28,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-12-27T08:00:00Z",
+     "amount": 759.57,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2025-12-31T09:12:00Z",
+     "amount": 2950.54,
+     "direction": "in",
+     "channel": "wire",
+     "country": "FR"
+    }
+   ],
+   "nature": "payroll",
+   "raison": "The salary lands on the day it has landed for six months, rent follows, and daily card spending draws the rest down."
+  },
+  {
+   "id": "l-rap-01",
+   "finFenetre": "2026-02-27",
+   "fenetre": [
+    {
+     "ts": "2026-02-03T09:15:00Z",
+     "amount": 44928.64,
+     "direction": "in",
+     "channel": "wire",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-02-04T11:00:00Z",
+     "amount": 44261.7,
+     "direction": "out",
+     "channel": "wire",
+     "country": "AE"
+    },
+    {
+     "ts": "2026-02-11T09:15:00Z",
+     "amount": 38141.22,
+     "direction": "in",
+     "channel": "wire",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-02-12T08:00:00Z",
+     "amount": 37729.03,
+     "direction": "out",
+     "channel": "wire",
+     "country": "HK"
+    }
+   ],
+   "historique": [
+    {
+     "ts": "2025-08-13T15:30:00Z",
+     "amount": 104.13,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-08-18T14:30:00Z",
+     "amount": 50.26,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-08-23T13:30:00Z",
+     "amount": 113.79,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-08-28T12:30:00Z",
+     "amount": 43.91,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-08-29T08:00:00Z",
+     "amount": 801.78,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2025-09-01T09:12:00Z",
+     "amount": 2646.48,
+     "direction": "in",
+     "channel": "wire",
+     "country": "FR"
+    },
+    {
+     "ts": "2025-09-12T15:30:00Z",
+     "amount": 104.59,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-09-17T14:30:00Z",
+     "amount": 43.57,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-09-22T13:30:00Z",
+     "amount": 37.51,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-09-27T12:30:00Z",
+     "amount": 78.17,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-09-28T08:00:00Z",
+     "amount": 800.06,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2025-10-02T09:12:00Z",
+     "amount": 2757.43,
+     "direction": "in",
+     "channel": "wire",
+     "country": "FR"
+    },
+    {
+     "ts": "2025-10-12T15:30:00Z",
+     "amount": 35.5,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-10-17T14:30:00Z",
+     "amount": 51.53,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-10-22T13:30:00Z",
+     "amount": 74.42,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-10-27T12:30:00Z",
+     "amount": 97.08,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-10-28T08:00:00Z",
+     "amount": 801.45,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2025-10-31T09:12:00Z",
+     "amount": 3018.25,
+     "direction": "in",
+     "channel": "wire",
+     "country": "FR"
+    },
+    {
+     "ts": "2025-11-11T15:30:00Z",
+     "amount": 69.22,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-11-16T14:30:00Z",
+     "amount": 85.12,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-11-21T13:30:00Z",
+     "amount": 80.52,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-11-26T12:30:00Z",
+     "amount": 72.79,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-11-27T08:00:00Z",
+     "amount": 786.72,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2025-11-29T09:12:00Z",
+     "amount": 3083.9,
+     "direction": "in",
+     "channel": "wire",
+     "country": "FR"
+    },
+    {
+     "ts": "2025-12-11T15:30:00Z",
+     "amount": 64.2,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-12-16T14:30:00Z",
+     "amount": 98.96,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-12-21T13:30:00Z",
+     "amount": 102.21,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-12-26T12:30:00Z",
+     "amount": 44.07,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-12-27T08:00:00Z",
+     "amount": 787.76,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2025-12-30T09:12:00Z",
+     "amount": 2897.45,
+     "direction": "in",
+     "channel": "wire",
+     "country": "FR"
+    }
+   ],
+   "nature": "rapid-movement",
+   "raison": "2 large wires arrive and leave again within about a day each, with dwell times far below anything in the account's history."
+  },
+  {
+   "id": "l-ren-04",
+   "finFenetre": "2026-05-29",
+   "fenetre": [
+    {
+     "ts": "2026-05-02T09:20:00Z",
+     "amount": 618.36,
+     "direction": "in",
+     "channel": "cash",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-05-03T10:20:00Z",
+     "amount": 744.68,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-05-04T11:20:00Z",
+     "amount": 720.29,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-05-05T12:20:00Z",
+     "amount": 764.29,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-05-09T10:00:00Z",
+     "amount": 1708.57,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-05-20T14:00:00Z",
+     "amount": 511.16,
+     "direction": "out",
+     "channel": "card"
+    }
+   ],
+   "historique": [
+    {
+     "ts": "2025-12-03T09:20:00Z",
+     "amount": 618.36,
+     "direction": "in",
+     "channel": "cash",
+     "country": "FR"
+    },
+    {
+     "ts": "2025-12-04T10:20:00Z",
+     "amount": 744.68,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2025-12-05T11:20:00Z",
+     "amount": 720.29,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2025-12-06T12:20:00Z",
+     "amount": 764.29,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-01-02T09:20:00Z",
+     "amount": 618.36,
+     "direction": "in",
+     "channel": "cash",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-01-03T10:20:00Z",
+     "amount": 744.68,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-01-04T11:20:00Z",
+     "amount": 720.29,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-01-05T12:20:00Z",
+     "amount": 764.29,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-02-01T09:20:00Z",
+     "amount": 618.36,
+     "direction": "in",
+     "channel": "cash",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-02-02T10:20:00Z",
+     "amount": 744.68,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-02-03T11:20:00Z",
+     "amount": 720.29,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-02-04T12:20:00Z",
+     "amount": 764.29,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-03-03T09:20:00Z",
+     "amount": 618.36,
+     "direction": "in",
+     "channel": "cash",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-03-04T10:20:00Z",
+     "amount": 744.68,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-03-05T11:20:00Z",
+     "amount": 720.29,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-03-06T12:20:00Z",
+     "amount": 764.29,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-04-02T09:20:00Z",
+     "amount": 618.36,
+     "direction": "in",
+     "channel": "cash",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-04-03T10:20:00Z",
+     "amount": 744.68,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-04-04T11:20:00Z",
+     "amount": 720.29,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-04-05T12:20:00Z",
+     "amount": 764.29,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    }
+   ],
+   "nature": "rent-collection",
+   "raison": "4 rents of familiar sizes arrive in the first days of the month, as they have every month on record, and the mortgage follows."
+  },
+  {
+   "id": "l-ren-05",
+   "finFenetre": "2026-06-19",
+   "fenetre": [
+    {
+     "ts": "2026-05-23T09:20:00Z",
+     "amount": 618.5,
+     "direction": "in",
+     "channel": "cash",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-05-24T10:20:00Z",
+     "amount": 778.24,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-05-25T11:20:00Z",
+     "amount": 603.64,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-05-26T12:20:00Z",
+     "amount": 777.98,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-05-27T13:20:00Z",
+     "amount": 791.02,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-05-30T10:00:00Z",
+     "amount": 2141.63,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-06-10T14:00:00Z",
+     "amount": 260.39,
+     "direction": "out",
+     "channel": "card"
+    }
+   ],
+   "historique": [
+    {
+     "ts": "2025-12-24T09:20:00Z",
+     "amount": 618.5,
+     "direction": "in",
+     "channel": "cash",
+     "country": "FR"
+    },
+    {
+     "ts": "2025-12-25T10:20:00Z",
+     "amount": 778.24,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2025-12-26T11:20:00Z",
+     "amount": 603.64,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2025-12-27T12:20:00Z",
+     "amount": 777.98,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2025-12-28T13:20:00Z",
+     "amount": 791.02,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-01-23T09:20:00Z",
+     "amount": 618.5,
+     "direction": "in",
+     "channel": "cash",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-01-24T10:20:00Z",
+     "amount": 778.24,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-01-25T11:20:00Z",
+     "amount": 603.64,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-01-26T12:20:00Z",
+     "amount": 777.98,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-01-27T13:20:00Z",
+     "amount": 791.02,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-02-22T09:20:00Z",
+     "amount": 618.5,
+     "direction": "in",
+     "channel": "cash",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-02-23T10:20:00Z",
+     "amount": 778.24,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-02-24T11:20:00Z",
+     "amount": 603.64,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-02-25T12:20:00Z",
+     "amount": 777.98,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-02-26T13:20:00Z",
+     "amount": 791.02,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-03-24T09:20:00Z",
+     "amount": 618.5,
+     "direction": "in",
+     "channel": "cash",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-03-25T10:20:00Z",
+     "amount": 778.24,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-03-26T11:20:00Z",
+     "amount": 603.64,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-03-27T12:20:00Z",
+     "amount": 777.98,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-03-28T13:20:00Z",
+     "amount": 791.02,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-04-23T09:20:00Z",
+     "amount": 618.5,
+     "direction": "in",
+     "channel": "cash",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-04-24T10:20:00Z",
+     "amount": 778.24,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-04-25T11:20:00Z",
+     "amount": 603.64,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-04-26T12:20:00Z",
+     "amount": 777.98,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-04-27T13:20:00Z",
+     "amount": 791.02,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    }
+   ],
+   "nature": "rent-collection",
+   "raison": "5 rents of familiar sizes arrive in the first days of the month, as they have every month on record, and the mortgage follows."
+  },
+  {
+   "id": "l-ren-07",
+   "finFenetre": "2026-08-21",
+   "fenetre": [
+    {
+     "ts": "2026-07-25T09:20:00Z",
+     "amount": 618.79,
+     "direction": "in",
+     "channel": "cash",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-07-26T10:20:00Z",
+     "amount": 845.36,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-07-27T11:20:00Z",
+     "amount": 740.32,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-07-28T12:20:00Z",
+     "amount": 805.37,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-08-01T10:00:00Z",
+     "amount": 1805.9,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-08-12T14:00:00Z",
+     "amount": 510.98,
+     "direction": "out",
+     "channel": "card"
+    }
+   ],
+   "historique": [
+    {
+     "ts": "2026-02-25T09:20:00Z",
+     "amount": 618.79,
+     "direction": "in",
+     "channel": "cash",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-02-26T10:20:00Z",
+     "amount": 845.36,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-02-27T11:20:00Z",
+     "amount": 740.32,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-02-28T12:20:00Z",
+     "amount": 805.37,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-03-27T09:20:00Z",
+     "amount": 618.79,
+     "direction": "in",
+     "channel": "cash",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-03-28T10:20:00Z",
+     "amount": 845.36,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-03-29T11:20:00Z",
+     "amount": 740.32,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-03-30T12:20:00Z",
+     "amount": 805.37,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-04-26T09:20:00Z",
+     "amount": 618.79,
+     "direction": "in",
+     "channel": "cash",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-04-27T10:20:00Z",
+     "amount": 845.36,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-04-28T11:20:00Z",
+     "amount": 740.32,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-04-29T12:20:00Z",
+     "amount": 805.37,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-05-26T09:20:00Z",
+     "amount": 618.79,
+     "direction": "in",
+     "channel": "cash",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-05-27T10:20:00Z",
+     "amount": 845.36,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-05-28T11:20:00Z",
+     "amount": 740.32,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-05-29T12:20:00Z",
+     "amount": 805.37,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-06-25T09:20:00Z",
+     "amount": 618.79,
+     "direction": "in",
+     "channel": "cash",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-06-26T10:20:00Z",
+     "amount": 845.36,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-06-27T11:20:00Z",
+     "amount": 740.32,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-06-28T12:20:00Z",
+     "amount": 805.37,
+     "direction": "in",
+     "channel": "transfer",
+     "country": "FR"
+    }
+   ],
+   "nature": "rent-collection",
+   "raison": "4 rents of familiar sizes arrive in the first days of the month, as they have every month on record, and the mortgage follows."
+  },
+  {
+   "id": "l-rtr-05",
+   "finFenetre": "2026-06-19",
+   "fenetre": [
+    {
+     "ts": "2026-05-24T10:00:00Z",
+     "amount": 26903.23,
+     "direction": "out",
+     "channel": "wire",
+     "country": "KY"
+    },
+    {
+     "ts": "2026-05-27T14:30:00Z",
+     "amount": 26913.74,
+     "direction": "in",
+     "channel": "wire",
+     "country": "KY"
+    },
+    {
+     "ts": "2026-05-31T10:00:00Z",
+     "amount": 26903.23,
+     "direction": "out",
+     "channel": "wire",
+     "country": "KY"
+    },
+    {
+     "ts": "2026-06-03T14:30:00Z",
+     "amount": 26834.52,
+     "direction": "in",
+     "channel": "wire",
+     "country": "KY"
+    },
+    {
+     "ts": "2026-06-07T10:00:00Z",
+     "amount": 26903.23,
+     "direction": "out",
+     "channel": "wire",
+     "country": "KY"
+    },
+    {
+     "ts": "2026-06-10T14:30:00Z",
+     "amount": 26807.55,
+     "direction": "in",
+     "channel": "wire",
+     "country": "KY"
+    }
+   ],
+   "historique": [
+    {
+     "ts": "2026-01-02T15:30:00Z",
+     "amount": 81.76,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-01-07T14:30:00Z",
+     "amount": 32.79,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-01-12T13:30:00Z",
+     "amount": 104.57,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-01-17T12:30:00Z",
+     "amount": 55.68,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-01-18T08:00:00Z",
+     "amount": 839.06,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-01-20T09:12:00Z",
+     "amount": 3128.18,
+     "direction": "in",
+     "channel": "wire",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-02-01T15:30:00Z",
+     "amount": 40.47,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-02-06T14:30:00Z",
+     "amount": 72.06,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-02-11T13:30:00Z",
+     "amount": 57.95,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-02-16T12:30:00Z",
+     "amount": 38.44,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-02-17T08:00:00Z",
+     "amount": 831.46,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-02-19T09:12:00Z",
+     "amount": 2623.82,
+     "direction": "in",
+     "channel": "wire",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-03-03T15:30:00Z",
+     "amount": 88.89,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-03-08T14:30:00Z",
+     "amount": 45.85,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-03-13T13:30:00Z",
+     "amount": 45.26,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-03-18T12:30:00Z",
+     "amount": 32.71,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-03-19T08:00:00Z",
+     "amount": 820.56,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-03-21T09:12:00Z",
+     "amount": 2995.89,
+     "direction": "in",
+     "channel": "wire",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-04-02T15:30:00Z",
+     "amount": 79.77,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-04-07T14:30:00Z",
+     "amount": 58.39,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-04-12T13:30:00Z",
+     "amount": 63.96,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-04-17T12:30:00Z",
+     "amount": 38.6,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-04-18T08:00:00Z",
+     "amount": 796.62,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-04-22T09:12:00Z",
+     "amount": 2651.1,
+     "direction": "in",
+     "channel": "wire",
+     "country": "FR"
+    }
+   ],
+   "nature": "round-tripping",
+   "raison": "Nearly the same amount leaves for and returns from the same counterparty country 3 times, netting close to zero."
+  },
+  {
+   "id": "l-sav-03",
+   "finFenetre": "2026-04-24",
+   "fenetre": [
+    {
+     "ts": "2026-03-29T12:00:00Z",
+     "amount": 99.87,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-04-01T13:00:00Z",
+     "amount": 74.23,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-04-04T14:00:00Z",
+     "amount": 54.51,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-04-07T15:00:00Z",
+     "amount": 93.82,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-04-10T16:00:00Z",
+     "amount": 57.14,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-04-13T17:00:00Z",
+     "amount": 73.13,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-04-16T18:00:00Z",
+     "amount": 49.72,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-04-19T09:06:00Z",
+     "amount": 3531.96,
+     "direction": "in",
+     "channel": "wire",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-04-19T11:00:00Z",
+     "amount": 750,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-04-19T12:00:00Z",
+     "amount": 63.15,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-04-22T13:00:00Z",
+     "amount": 59.17,
+     "direction": "out",
+     "channel": "card"
+    }
+   ],
+   "historique": [
+    {
+     "ts": "2025-11-20T09:06:00Z",
+     "amount": 3050.3,
+     "direction": "in",
+     "channel": "wire",
+     "country": "FR"
+    },
+    {
+     "ts": "2025-11-20T11:00:00Z",
+     "amount": 750,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2025-12-20T09:06:00Z",
+     "amount": 3470.44,
+     "direction": "in",
+     "channel": "wire",
+     "country": "FR"
+    },
+    {
+     "ts": "2025-12-20T11:00:00Z",
+     "amount": 750,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-01-19T09:06:00Z",
+     "amount": 3554.47,
+     "direction": "in",
+     "channel": "wire",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-01-19T11:00:00Z",
+     "amount": 750,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-02-18T09:06:00Z",
+     "amount": 3014.37,
+     "direction": "in",
+     "channel": "wire",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-02-18T11:00:00Z",
+     "amount": 750,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-03-20T09:06:00Z",
+     "amount": 2900.73,
+     "direction": "in",
+     "channel": "wire",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-03-20T11:00:00Z",
+     "amount": 750,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "FR"
+    }
+   ],
+   "nature": "savings-transfer",
+   "raison": "Payday money moves to savings the same day, a round amount, every month, to the same place."
+  },
+  {
+   "id": "l-sav-04",
+   "finFenetre": "2026-05-29",
+   "fenetre": [
+    {
+     "ts": "2026-05-03T12:00:00Z",
+     "amount": 108.49,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-05-06T13:00:00Z",
+     "amount": 44.28,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-05-09T14:00:00Z",
+     "amount": 58.03,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-05-12T15:00:00Z",
+     "amount": 62.13,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-05-15T16:00:00Z",
+     "amount": 33.18,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-05-18T17:00:00Z",
+     "amount": 19.08,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-05-21T18:00:00Z",
+     "amount": 41.75,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-05-24T09:06:00Z",
+     "amount": 3532.31,
+     "direction": "in",
+     "channel": "wire",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-05-24T11:00:00Z",
+     "amount": 800,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-05-24T12:00:00Z",
+     "amount": 16.48,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-05-27T13:00:00Z",
+     "amount": 64.63,
+     "direction": "out",
+     "channel": "card"
+    }
+   ],
+   "historique": [
+    {
+     "ts": "2025-12-25T09:06:00Z",
+     "amount": 3255.79,
+     "direction": "in",
+     "channel": "wire",
+     "country": "FR"
+    },
+    {
+     "ts": "2025-12-25T11:00:00Z",
+     "amount": 800,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-01-24T09:06:00Z",
+     "amount": 3427.07,
+     "direction": "in",
+     "channel": "wire",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-01-24T11:00:00Z",
+     "amount": 800,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-02-23T09:06:00Z",
+     "amount": 3533.65,
+     "direction": "in",
+     "channel": "wire",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-02-23T11:00:00Z",
+     "amount": 800,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-03-25T09:06:00Z",
+     "amount": 3630.7,
+     "direction": "in",
+     "channel": "wire",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-03-25T11:00:00Z",
+     "amount": 800,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-04-24T09:06:00Z",
+     "amount": 3309.08,
+     "direction": "in",
+     "channel": "wire",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-04-24T11:00:00Z",
+     "amount": 800,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "FR"
+    }
+   ],
+   "nature": "savings-transfer",
+   "raison": "Payday money moves to savings the same day, a round amount, every month, to the same place."
+  },
+  {
+   "id": "l-sea-04",
+   "finFenetre": "2026-05-29",
+   "fenetre": [
+    {
+     "ts": "2026-05-09T08:15:00Z",
+     "amount": 544.69,
+     "direction": "in",
+     "channel": "cash"
+    },
+    {
+     "ts": "2026-05-10T09:15:00Z",
+     "amount": 460.78,
+     "direction": "in",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-05-11T10:15:00Z",
+     "amount": 1401.95,
+     "direction": "in",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-05-13T11:15:00Z",
+     "amount": 921.42,
+     "direction": "in",
+     "channel": "cash"
+    },
+    {
+     "ts": "2026-05-14T12:15:00Z",
+     "amount": 756.03,
+     "direction": "in",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-05-16T13:15:00Z",
+     "amount": 1498.51,
+     "direction": "in",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-05-17T14:15:00Z",
+     "amount": 834.16,
+     "direction": "in",
+     "channel": "cash"
+    },
+    {
+     "ts": "2026-05-18T15:15:00Z",
+     "amount": 1490.3,
+     "direction": "in",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-05-20T16:15:00Z",
+     "amount": 531.91,
+     "direction": "in",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-05-21T08:15:00Z",
+     "amount": 1625.31,
+     "direction": "in",
+     "channel": "cash"
+    },
+    {
+     "ts": "2026-05-23T09:15:00Z",
+     "amount": 1268.09,
+     "direction": "in",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-05-24T10:15:00Z",
+     "amount": 1260.39,
+     "direction": "in",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-05-26T10:00:00Z",
+     "amount": 4800,
+     "direction": "out",
+     "channel": "wire",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-05-28T10:30:00Z",
+     "amount": 1920,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "FR"
+    }
+   ],
+   "historique": [
+    {
+     "ts": "2025-11-11T08:15:00Z",
+     "amount": 938.49,
+     "direction": "in",
+     "channel": "cash"
+    },
+    {
+     "ts": "2025-11-12T09:15:00Z",
+     "amount": 1289.11,
+     "direction": "in",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-11-13T10:15:00Z",
+     "amount": 1537.86,
+     "direction": "in",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-11-15T11:15:00Z",
+     "amount": 994.24,
+     "direction": "in",
+     "channel": "cash"
+    },
+    {
+     "ts": "2025-11-16T12:15:00Z",
+     "amount": 676.15,
+     "direction": "in",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-11-18T13:15:00Z",
+     "amount": 1421.21,
+     "direction": "in",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-11-19T14:15:00Z",
+     "amount": 1246.29,
+     "direction": "in",
+     "channel": "cash"
+    },
+    {
+     "ts": "2025-11-20T15:15:00Z",
+     "amount": 611.1,
+     "direction": "in",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-11-22T16:15:00Z",
+     "amount": 802.14,
+     "direction": "in",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-11-23T08:15:00Z",
+     "amount": 1519.18,
+     "direction": "in",
+     "channel": "cash"
+    },
+    {
+     "ts": "2025-11-25T09:15:00Z",
+     "amount": 857.91,
+     "direction": "in",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-11-26T10:15:00Z",
+     "amount": 310.82,
+     "direction": "in",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-11-28T10:00:00Z",
+     "amount": 4800,
+     "direction": "out",
+     "channel": "wire",
+     "country": "FR"
+    },
+    {
+     "ts": "2025-11-30T10:30:00Z",
+     "amount": 1920,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-02-07T08:15:00Z",
+     "amount": 959.49,
+     "direction": "in",
+     "channel": "cash"
+    },
+    {
+     "ts": "2026-02-08T09:15:00Z",
+     "amount": 944.69,
+     "direction": "in",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-02-09T10:15:00Z",
+     "amount": 1652.6,
+     "direction": "in",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-02-11T11:15:00Z",
+     "amount": 645.17,
+     "direction": "in",
+     "channel": "cash"
+    },
+    {
+     "ts": "2026-02-12T12:15:00Z",
+     "amount": 1521.32,
+     "direction": "in",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-02-14T13:15:00Z",
+     "amount": 1261.66,
+     "direction": "in",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-02-15T14:15:00Z",
+     "amount": 1353.19,
+     "direction": "in",
+     "channel": "cash"
+    },
+    {
+     "ts": "2026-02-16T15:15:00Z",
+     "amount": 539.11,
+     "direction": "in",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-02-18T16:15:00Z",
+     "amount": 1190.57,
+     "direction": "in",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-02-19T08:15:00Z",
+     "amount": 851.6,
+     "direction": "in",
+     "channel": "cash"
+    },
+    {
+     "ts": "2026-02-21T09:15:00Z",
+     "amount": 1053.76,
+     "direction": "in",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-02-22T10:15:00Z",
+     "amount": 1221.58,
+     "direction": "in",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-02-24T10:00:00Z",
+     "amount": 4800,
+     "direction": "out",
+     "channel": "wire",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-02-26T10:30:00Z",
+     "amount": 1920,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "FR"
+    }
+   ],
+   "nature": "seasonal-trade",
+   "raison": "A market trader's high season: the same burst of takings sits twice in the history, one season and two seasons earlier, at the same scale."
+  },
+  {
+   "id": "l-sea-05",
+   "finFenetre": "2026-06-19",
+   "fenetre": [
+    {
+     "ts": "2026-05-30T08:15:00Z",
+     "amount": 545.23,
+     "direction": "in",
+     "channel": "cash"
+    },
+    {
+     "ts": "2026-05-31T09:15:00Z",
+     "amount": 587.77,
+     "direction": "in",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-06-02T10:15:00Z",
+     "amount": 960.54,
+     "direction": "in",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-06-04T11:15:00Z",
+     "amount": 973.24,
+     "direction": "in",
+     "channel": "cash"
+    },
+    {
+     "ts": "2026-06-06T12:15:00Z",
+     "amount": 1689.08,
+     "direction": "in",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-06-08T13:15:00Z",
+     "amount": 1145.31,
+     "direction": "in",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-06-10T14:15:00Z",
+     "amount": 1437.61,
+     "direction": "in",
+     "channel": "cash"
+    },
+    {
+     "ts": "2026-06-12T15:15:00Z",
+     "amount": 1372.92,
+     "direction": "in",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-06-14T16:15:00Z",
+     "amount": 1244.11,
+     "direction": "in",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-06-16T10:00:00Z",
+     "amount": 3600,
+     "direction": "out",
+     "channel": "wire",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-06-18T10:30:00Z",
+     "amount": 1440,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "FR"
+    }
+   ],
+   "historique": [
+    {
+     "ts": "2025-12-02T08:15:00Z",
+     "amount": 371.21,
+     "direction": "in",
+     "channel": "cash"
+    },
+    {
+     "ts": "2025-12-03T09:15:00Z",
+     "amount": 380.6,
+     "direction": "in",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-12-05T10:15:00Z",
+     "amount": 758.09,
+     "direction": "in",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-12-07T11:15:00Z",
+     "amount": 1639.56,
+     "direction": "in",
+     "channel": "cash"
+    },
+    {
+     "ts": "2025-12-09T12:15:00Z",
+     "amount": 592.09,
+     "direction": "in",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-12-11T13:15:00Z",
+     "amount": 1321.98,
+     "direction": "in",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-12-13T14:15:00Z",
+     "amount": 1102.85,
+     "direction": "in",
+     "channel": "cash"
+    },
+    {
+     "ts": "2025-12-15T15:15:00Z",
+     "amount": 507.65,
+     "direction": "in",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-12-17T16:15:00Z",
+     "amount": 976.92,
+     "direction": "in",
+     "channel": "card"
+    },
+    {
+     "ts": "2025-12-19T10:00:00Z",
+     "amount": 3600,
+     "direction": "out",
+     "channel": "wire",
+     "country": "FR"
+    },
+    {
+     "ts": "2025-12-21T10:30:00Z",
+     "amount": 1440,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-02-28T08:15:00Z",
+     "amount": 305.74,
+     "direction": "in",
+     "channel": "cash"
+    },
+    {
+     "ts": "2026-03-01T09:15:00Z",
+     "amount": 503.31,
+     "direction": "in",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-03-03T10:15:00Z",
+     "amount": 819.13,
+     "direction": "in",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-03-05T11:15:00Z",
+     "amount": 927.09,
+     "direction": "in",
+     "channel": "cash"
+    },
+    {
+     "ts": "2026-03-07T12:15:00Z",
+     "amount": 877.23,
+     "direction": "in",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-03-09T13:15:00Z",
+     "amount": 572.26,
+     "direction": "in",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-03-11T14:15:00Z",
+     "amount": 1297.71,
+     "direction": "in",
+     "channel": "cash"
+    },
+    {
+     "ts": "2026-03-13T15:15:00Z",
+     "amount": 335.74,
+     "direction": "in",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-03-15T16:15:00Z",
+     "amount": 1282.94,
+     "direction": "in",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-03-17T10:00:00Z",
+     "amount": 3600,
+     "direction": "out",
+     "channel": "wire",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-03-19T10:30:00Z",
+     "amount": 1440,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "FR"
+    }
+   ],
+   "nature": "seasonal-trade",
+   "raison": "A market trader's high season: the same burst of takings sits twice in the history, one season and two seasons earlier, at the same scale."
+  },
+  {
+   "id": "l-str-05",
+   "finFenetre": "2026-06-19",
+   "fenetre": [
+    {
+     "ts": "2026-05-28T09:10:00Z",
+     "amount": 9497.29,
+     "direction": "in",
+     "channel": "cash"
+    },
+    {
+     "ts": "2026-05-29T14:11:00Z",
+     "amount": 9082.27,
+     "direction": "in",
+     "channel": "cash"
+    },
+    {
+     "ts": "2026-05-31T09:12:00Z",
+     "amount": 9526.87,
+     "direction": "in",
+     "channel": "cash"
+    },
+    {
+     "ts": "2026-06-02T14:13:00Z",
+     "amount": 9296.29,
+     "direction": "in",
+     "channel": "cash"
+    },
+    {
+     "ts": "2026-06-04T09:14:00Z",
+     "amount": 9244.45,
+     "direction": "in",
+     "channel": "cash"
+    },
+    {
+     "ts": "2026-06-05T14:15:00Z",
+     "amount": 9604.7,
+     "direction": "in",
+     "channel": "cash"
+    },
+    {
+     "ts": "2026-06-07T09:16:00Z",
+     "amount": 8636.41,
+     "direction": "in",
+     "channel": "cash"
+    },
+    {
+     "ts": "2026-06-09T14:17:00Z",
+     "amount": 9445.75,
+     "direction": "in",
+     "channel": "cash"
+    },
+    {
+     "ts": "2026-06-15T11:05:00Z",
+     "amount": 60953.91,
+     "direction": "out",
+     "channel": "wire",
+     "country": "KY"
+    }
+   ],
+   "historique": [
+    {
+     "ts": "2026-01-02T15:30:00Z",
+     "amount": 37.09,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-01-07T14:30:00Z",
+     "amount": 44.6,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-01-12T13:30:00Z",
+     "amount": 85.67,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-01-17T12:30:00Z",
+     "amount": 75.55,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-01-18T08:00:00Z",
+     "amount": 800.5,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-01-21T09:12:00Z",
+     "amount": 2901.3,
+     "direction": "in",
+     "channel": "wire",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-02-01T15:30:00Z",
+     "amount": 81.02,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-02-06T14:30:00Z",
+     "amount": 26.74,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-02-11T13:30:00Z",
+     "amount": 110.18,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-02-16T12:30:00Z",
+     "amount": 108.46,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-02-17T08:00:00Z",
+     "amount": 805.96,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-02-19T09:12:00Z",
+     "amount": 3005.22,
+     "direction": "in",
+     "channel": "wire",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-03-03T15:30:00Z",
+     "amount": 60.99,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-03-08T14:30:00Z",
+     "amount": 43.05,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-03-13T13:30:00Z",
+     "amount": 84.79,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-03-18T12:30:00Z",
+     "amount": 101.99,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-03-19T08:00:00Z",
+     "amount": 811.01,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-03-23T09:12:00Z",
+     "amount": 2817.78,
+     "direction": "in",
+     "channel": "wire",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-04-02T15:30:00Z",
+     "amount": 76.21,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-04-07T14:30:00Z",
+     "amount": 46.49,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-04-12T13:30:00Z",
+     "amount": 72.43,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-04-17T12:30:00Z",
+     "amount": 91.37,
+     "direction": "out",
+     "channel": "card"
+    },
+    {
+     "ts": "2026-04-18T08:00:00Z",
+     "amount": 826.38,
+     "direction": "out",
+     "channel": "transfer",
+     "country": "FR"
+    },
+    {
+     "ts": "2026-04-21T09:12:00Z",
+     "amount": 2756.72,
+     "direction": "in",
+     "channel": "wire",
+     "country": "FR"
+    }
+   ],
+   "nature": "structuring",
+   "raison": "8 cash deposits in two weeks, each kept under the reporting threshold, then most of the total wired abroad in one payment."
+  }
+ ]
+}

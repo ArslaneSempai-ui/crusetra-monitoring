@@ -14,7 +14,8 @@ import { join } from "node:path";
 import { PALIERS, type Registre, type Scenario, type Echelles } from "./scenario.ts";
 import { exigerCas } from "./cas.ts";
 import { registre } from "./scenarios/index.ts";
-import { chargerCasEtiquetes, jeuSynthetique, type CasEtiquete } from "./synthetic.ts";
+import { chargerCasEtiquetes, jeuSynthetique, CAS_PRIVES, type CasEtiquete } from "./synthetic.ts";
+import { jeuPresent, raisonAbsent } from "./jeux.ts";
 import { empreinteDuReleve, scelleIntact } from "./empreinte.ts";
 import { ECHELLES } from "./assumptions.ts";
 import {
@@ -116,7 +117,8 @@ test("le scellé refuse la retouche : un chiffre bougé fait mentir l'empreinte"
     "un succès de plus dans une seule cellule doit suffire à casser le scellé");
 });
 
-test("la moitié synthétique est déterministe : même graine, même empreinte de tables", () => {
+test("la moitié synthétique est déterministe : même graine, même empreinte de tables",
+  { skip: jeuPresent(CAS_PRIVES) ? false : raisonAbsent(CAS_PRIVES) }, () => {
   const ecrits = chargerCasEtiquetes();
   const a = jeuSynthetique(ecrits, GRAINE_PUBLIQUE, VARIANTES_PAR_CAS);
   const b = jeuSynthetique(ecrits, GRAINE_PUBLIQUE, VARIANTES_PAR_CAS);

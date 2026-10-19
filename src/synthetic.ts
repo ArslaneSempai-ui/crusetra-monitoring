@@ -25,7 +25,7 @@
  * est retrié), la fenêtre entière glisse de quelques jours, et l'échelle du cas bouge.
  */
 import { readFileSync } from "node:fs";
-import { fileURLToPath } from "node:url";
+import { cheminPrive, jeuPresent, JeuPriveAbsent } from "./jeux.ts";
 import { exigerCas, type Cas, type Transaction } from "./cas.ts";
 
 export const NATURES_SUSPECTES = [
@@ -60,9 +60,13 @@ const MODE_MONTANTS: Partial<Record<NatureCas, "facteur-commun" | "facteur-rond"
 
 const eur = (x: number): number => Math.round(x * 100) / 100;
 
+/** The full authored set is private: see jeux.ts. Its public sample is echantillons/cas-20.json. */
+export const CAS_PRIVES = "src/cas-etiquetes.json";
+
 /** Les cas écrits, relus depuis le fichier et revalidés un par un : la couture de L4. */
 export function chargerCasEtiquetes(): CasEtiquete[] {
-  const chemin = fileURLToPath(new URL("./cas-etiquetes.json", import.meta.url));
+  if (!jeuPresent(CAS_PRIVES)) throw new JeuPriveAbsent(CAS_PRIVES);
+  const chemin = cheminPrive(CAS_PRIVES);
   const brut = JSON.parse(readFileSync(chemin, "utf8")) as { cas: CasEtiquete[] };
   const toutes = new Set<string>([...NATURES_SUSPECTES, ...NATURES_BENIGNES]);
   for (const c of brut.cas) {
