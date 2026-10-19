@@ -63,6 +63,14 @@ with `npm run verify`.
 **134 tests** across 21 files, counted by running the suite rather than typed here.
 <!-- /figures:tests -->
 
+## What is public, what is private
+
+The figures stay public: `releve-public.json`, its signature and `RELEVE-PUBLIC.md`. The only labelled cases left public are in `src/echantillons/cas-20.json`: 20 cases, every nature at least once, drawn by a fixed rule written at the top of the file (rank by the SHA-256 of a seed and the case id), never hand-picked.
+
+The full labelled case set (`src/cas-etiquetes.json`) is private since this change. Its recorded SHA-256 is `5a24abfe3ce7aaee489e0e916ba3155f3411259f18aba2b009e25c2752ffee89`, from the private folder's `MANIFEST.txt`. Earlier versions remain in the git history of this repository.
+
+A holder of the private folder runs the full tests with `CRUSETRA_JEUX=/path/to/crusetra-jeux/crusetra-monitoring npm test` (default: `../crusetra-jeux/crusetra-monitoring`); the seal then recomputes. Without it the tests that read the set are skipped with a named reason.
+
 ## Licence
 
 The same public licence as Crusetra Routing: non-commercial use without limit of time, a
